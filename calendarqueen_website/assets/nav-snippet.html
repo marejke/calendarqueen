@@ -1,0 +1,46 @@
+<!-- =============================================
+   CALENDAR QUEEN — Shared Nav & Cookie Banner
+   Include at top of every page body
+   ============================================= -->
+
+<a href="#main-content" class="sr-only" style="position:absolute;top:-999px;">Zum Inhalt springen</a>
+
+<header>
+  <nav class="nav" aria-label="Hauptnavigation">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo" aria-label="Calendar Queen – Startseite">
+        <div class="nav-logo-icon" aria-hidden="true">🗓️</div>
+        <span class="nav-logo-text">Calendar Queen</span>
+      </a>
+
+      <div class="nav-links" role="list">
+        <a href="feeds.html" role="listitem">Feeds entdecken</a>
+        <a href="index.html#how" role="listitem">So funktionierts</a>
+        <a href="index.html#faq" role="listitem">FAQ</a>
+      </div>
+
+      <a href="feeds.html" class="nav-cta">Gratis starten</a>
+
+      <button class="nav-hamburger" id="hamburger" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mobile-menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobile-menu" role="navigation" aria-label="Mobile Navigation">
+    <a href="index.html">Startseite</a>
+    <a href="feeds.html">Feeds entdecken</a>
+    <a href="index.html#how">So funktionierts</a>
+    <a href="index.html#faq">FAQ</a>
+    <a href="feeds.html" class="nav-cta">Gratis starten</a>
+  </div>
+</header>
+
+<!-- Cookie Banner -->
+<div id="cookie-banner" class="cookie-banner" role="dialog" aria-live="polite" aria-label="Cookie-Hinweis">
+  <p>Wir verwenden technisch notwendige Cookies. Weitere Informationen findest du in unserer <a href="datenschutz.html">Datenschutzerklärung</a>.</p>
+  <div class="cookie-actions">
+    <button class="cookie-decline" id="cookie-decline">Nur notwendige</button>
+    <button class="cookie-accept" id="cookie-accept">Alles akzeptieren</button>
+  </div>
+</div>

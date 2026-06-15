@@ -1,0 +1,15 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Calendar Queen//berlin-events//DE
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:📅 berlin-events – Calendar Queen
+X-WR-CALDESC:Calendar Queen Feed – berlin-events. Dieser Feed wird demnächst mit Inhalten befüllt.
+X-WR-TIMEZONE:Europe/Berlin
+BEGIN:VEVENT
+UID:berlin-events-coming-soon@calendarqueen.de
+DTSTART;VALUE=DATE:20250101
+SUMMARY:📅 berlin-events – Feed abonniert!
+DESCRIPTION:Du hast den berlin-events-Feed von Calendar Queen erfolgreich abonniert. Inhalte folgen in Kürze – wir befüllen den Feed laufend. Danke für dein Vertrauen!\n\nFragen? hallo@calendarqueen.de
+END:VEVENT
+END:VCALENDAR
