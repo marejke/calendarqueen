@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Alle Kalender-Feeds von Calendar Queen – Mondphasen, Babyjahr, Berlin Events, Saisonkalender und mehr." />
+  <title>Feeds entdecken – Calendar Queen</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .feeds-hero { background: var(--violet-900); padding: 56px 24px 48px; text-align: center; }
+    .feeds-hero-inner { max-width: var(--max-w); margin: 0 auto; }
+    .feeds-hero h1 { color: var(--white); margin-bottom: 10px; }
+    .feeds-hero p { color: var(--violet-200); font-size: 16px; max-width: 460px; margin: 0 auto 28px; }
+    .feeds-section { padding: 48px 0; }
+    .feeds-toolbar {
+      display: flex; gap: 16px; align-items: flex-start;
+      margin-bottom: 32px; flex-wrap: wrap;
+    }
+    .feeds-toolbar .search-wrap { flex: 1; min-width: 200px; }
+    .count-label { font-size: 13px; color: var(--gray-400); margin-bottom: 16px; }
+    .feed-card-full {
+      background: var(--white); border: 1px solid var(--gray-100);
+      border-radius: var(--radius-lg); padding: 20px;
+      display: flex; gap: 16px; align-items: flex-start;
+      transition: box-shadow 0.25s, transform 0.25s;
+      text-decoration: none; color: inherit;
+    }
+    .feed-card-full:hover { box-shadow: var(--shadow-hover); transform: translateY(-2px); }
+    .feed-card-full .feed-icon { flex-shrink: 0; }
+    .feed-card-full-body { flex: 1; min-width: 0; }
+    .feed-card-full-title { font-size: 16px; font-weight: 600; color: var(--violet-900); margin-bottom: 4px; }
+    .feed-card-full-desc { font-size: 14px; color: var(--gray-500); line-height: 1.6; margin-bottom: 10px; }
+    .feed-card-full-footer { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+    .feed-compat { font-size: 11px; color: var(--gray-400); }
+    .feeds-list { display: flex; flex-direction: column; gap: 12px; }
+    @media (max-width: 640px) {
+      .feed-card-full { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+<a href="#main-content" class="sr-only" style="position:fixed;top:-999px;left:0;background:var(--violet-500);color:#fff;padding:10px 20px;border-radius:0 0 8px 8px;z-index:9999;transition:top 0.2s;" onfocus="this.style.top='0'" onblur="this.style.top='-999px'">Zum Inhalt springen</a>
+
+<header>
+  <nav class="nav" aria-label="Hauptnavigation">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo" aria-label="Calendar Queen – Startseite">
+        <div class="nav-logo-icon" aria-hidden="true">🗓️</div>
+        <span class="nav-logo-text">Calendar Queen</span>
+      </a>
+      <div class="nav-links">
+        <a href="feeds.html" class="active">Feeds entdecken</a>
+        <a href="index.html#how">So funktionierts</a>
+        <a href="index.html#faq">FAQ</a>
+      </div>
+      <a href="feeds.html" class="nav-cta">Gratis starten</a>
+      <button class="nav-hamburger" id="hamburger" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mobile-menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+  <div class="mobile-menu" id="mobile-menu" role="navigation" aria-label="Mobile Navigation">
+    <a href="index.html">Startseite</a>
+    <a href="feeds.html">Feeds entdecken</a>
+    <a href="index.html#how">So funktionierts</a>
+    <a href="index.html#faq">FAQ</a>
+    <a href="feeds.html" class="nav-cta">Gratis starten</a>
+  </div>
+</header>
+
+<main id="main-content">
+
+  <div class="feeds-hero" aria-label="Feed-Übersicht">
+    <div class="feeds-hero-inner">
+      <p class="section-eyebrow" style="color:var(--violet-400);">40+ kuratierte Feeds</p>
+      <h1 class="display-md">Finde deinen Feed</h1>
+      <p>Filtere nach Kategorie oder suche direkt – alle Feeds lassen sich in einem Klick in deinen Kalender integrieren.</p>
+      <div class="search-wrap" style="max-width:480px;margin:0 auto;" role="search" aria-label="Feeds durchsuchen">
+        <span class="icon" aria-hidden="true">🔍</span>
+        <input
+          class="search-input"
+          type="search"
+          id="feed-search"
+          placeholder="z.B. Mondphasen, Baby, Berlin …"
+          aria-label="Feeds durchsuchen"
+          autocomplete="off"
+        />
+      </div>
+    </div>
+  </div>
+
+  <section class="feeds-section" aria-labelledby="feeds-list-heading">
+    <div class="container">
+
+      <!-- Category Filter -->
+      <div class="cat-filter" role="group" aria-label="Nach Kategorie filtern">
+        <button class="cat-pill active" data-cat="all" aria-pressed="true">Alle</button>
+        <button class="cat-pill" data-cat="familie" aria-pressed="false">👶 Familie</button>
+        <button class="cat-pill" data-cat="natur" aria-pressed="false">🌿 Natur & Garten</button>
+        <button class="cat-pill" data-cat="events" aria-pressed="false">🎵 Events & Kultur</button>
+        <button class="cat-pill" data-cat="berlin" aria-pressed="false">🗺️ Berlin</button>
+        <button class="cat-pill" data-cat="astronomie" aria-pressed="false">🔭 Astronomie</button>
+        <button class="cat-pill" data-cat="lifestyle" aria-pressed="false">✨ Lifestyle</button>
+        <button class="cat-pill" data-cat="fristen" aria-pressed="false">📄 Fristen & Termine</button>
+        <button class="cat-pill" data-cat="sport" aria-pressed="false">⚽ Sport</button>
+      </div>
+
+      <div class="count-label" id="count-label" aria-live="polite">Alle Feeds werden angezeigt</div>
+
+      <h2 class="sr-only" id="feeds-list-heading">Alle verfügbaren Feeds</h2>
+
+      <div class="feeds-list" id="feeds-list" role="list">
+
+        <!-- FAMILIE -->
+        <div class="feed-card-full" data-cat="familie" role="listitem">
+          <div class="feed-icon" style="background:var(--pink-50);font-size:24px;display:flex;align-items:center;justify-content:center;width:52px;height:52px;border-radius:var(--radius-md);">👶</div>
+          <div class="feed-card-full-body">
+            <div class="feed-card-full-title">Erstes Babyjahr</div>
+            <p class="feed-card-full-desc">Wachstumsschübe & Entwicklungsmeilensteine deines Babys – automatisch zum Geburtsdatum berechnet. Mit konkreten Tipps, was gerade passiert und wie du helfen kannst.</p>
+            <div class="feed-card-full-footer">
+              <span class="badge badge-premium">Premium – ab 3 €/Monat</span>
+              <span class="feed-compat">🍎 🗓️ 📧</span>
+              <button class="feed-sub-btn btn-sm" data-subscribe="babyjahr" data-title="Erstes Babyjahr">+ Abonnieren</button>
+              <a href="feed-babyjahr.html" style="font-size:13px;color:var(--violet-500);">Details →</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="feed-card-full" data-cat="familie" role="listitem">
+          <div class="feed-icon" style="background:var(--pink-50);font-size:24px;display:flex;align-items:center;justify-content:center;width:52px;height:52px;border-radius:var(--radius-md);">🤰</div>
+          <div class="feed-card-full-body">
+            <div class="feed-card-full-title">Schwangerschaftskalender</div>
+            <p class="feed-card-full-desc">Wochenweise Entwicklung des Fötus in Meilensteinen – was passiert gerade im Bauch? Kostenlos, ohne Gesundheitsdaten-Erhebung.</p>
+            <div class="feed-card-full-footer">
+              <span class="badge badge-free">Gratis</span>
+              <span class="feed-compat">🍎 🗓️ 📧</span>
+              <button class="feed-sub-btn btn-sm" data-subscribe="schwangerschaft" data-title="Schwangerschaftskalender">+ Abonnieren</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- NATUR -->
+        <div class="feed-card-full" data-cat="natur" role="listitem">
+          <div class="feed-icon" style="background:var(--green-50);font-size:24px;display:flex;align-items:center;justify-content:center;width:52px;height:52px;border-radius:var(--radius-md);">🌿</div>
+          <div class="feed-card-full-body">
+            <div class="feed-card-full-title">Saisonkalender Gemüse & Obst</div>
+            <p class="feed-card-full-desc">Was hat gerade Saison? Wöchentliche Hinweise auf Gemüse, Obst und Kräuter, die jetzt erntefrisch und regional erhältlich sind.</p>
+            <div class="feed-card-full-footer">
+              <span class="badge badge-free">Gratis</span>
+              <span class="feed-compat">🍎 🗓️ 📧</span>
+              <button class="feed-sub-btn btn-sm" data-subscribe="saisonkalender" data-title="Saisonkalender">+ Abonnieren</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="feed-card-full" data-cat="natur" role="listitem">
+          <div class="feed-icon" style="background:var(--green-50);font-size:24px;display:flex;align-items:center;justify-content:center;width:52px;height:52px;border-radius:var(--radius-md);">🌱</div>
+          <div class="feed-card-full-body">
+            <div class="feed-card-full-title">Gartenkalender</div>
+            <p class="feed-card-full-desc">Wann was pflanzen, wann beschneiden, Erntezeiten und Schonzeiten – dein Gartenbegleiter für jede Saison.</p>
+            <div class="feed-card-full-footer">
+              <span class="badge badge-free">Gratis</span>
+              <span class="feed-compat">🍎 🗓️ 📧</span>
+              <button class="feed-sub-btn btn-sm" data-subscribe="gartenkalender" data-title="Gartenkalender">+ Abonnieren</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="feed-card-full" data-cat="natur" role="listitem">
+          <div class="feed-icon" style="background:var(--green-50);font-size:24px;display:flex;align-items:center;justify-content:center;width:52px;height:52px;border-radius:var(--radius-md);">🍄</div>
+          <div class="feed-card-full-body">
+            <div class="feed-card-full-title">Pilz- & Erntesaison</div>
+            <p class="feed-card-full-desc">Spargel, Erdbeeren, Wein, Pilze – wann welche Ernte wo beginnt. Ideal für Foodies, Selbstversorger und Naturliebhaber.</p>
+            <div class="feed-card-full-footer">
+              <span class="badge badge-free">Gratis</span>
+              <span class="feed-compat">🍎 🗓️ 📧</span>
+              <button class="feed-sub-btn btn-sm" data-subscribe="erntesaison" data-title="Pilz- & Erntesaison">+ Abonnieren</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- ASTRONOMIE -->
+        <div class="feed-card-full" data-cat="astronomie" role="listitem">
+          <div class="feed-icon" style="background:var(--violet-50);font-size:24px;display:flex;align-items:center;justify-content:center;width:52px;height:52px;border-radius:var(--radius-md);">🌕</div>
+          <div class="feed-card-full-body">
+            <div class="feed-card-full-title">Mondphasen 2025 / 2026</div>
+            <p class="feed-card-full-desc">Vollmond, Neumond, Halbmond – alle Mondphasen automatisch im Kalender. Ideal für Gartenarbeit nach Mondkalender, Rituale oder einfach schön zu wissen.</p>
+            <div class="feed-card-full-footer">
+              <span class="badge badge-free">Gratis</span>
+              <span class="feed-compat">🍎 🗓️ 📧</span>
+              <button class="feed-sub-btn btn-sm" data-subscribe="mondphasen" data-title="Mondphasen 2025/2026">+ Abonnieren</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="feed-card-full" data-cat="astronomie" role="listitem">
+          <div class="feed-icon" style="background:var(--violet-50);font-size:24px;display:flex;align-items:center;justify-content:center;width:52px;height:52px;border-radius:var(--radius-md);">☄️</div>
+          <div class="feed-card-full-body">
+            <div class="feed-card-full-title">Astronomie-Highlights</div>
+            <p class="feed-card-full-desc">Meteorschauer, Supermonde, ISS-Sichtbarkeit, Sonnenfinsternisse und Polarlicht-Wahrscheinlichkeit – für alle, die nachts gerne den Blick nach oben richten.</p>
+            <div class="feed-card-full-footer">
+              <span class="badge badge-free">Gratis</span>
+              <span class="feed-compat">🍎 🗓️ 📧</span>
+              <button class="feed-sub-btn btn-sm" data-subscribe="astronomie" data-title="Astronomie-Highlights">+ Abonnieren</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- EVENTS -->
+        <div class="feed-card-full" data-cat="events" role="listitem">
+          <div class="feed-icon" style="background:var(--blue-50);font-size:24px;display:flex;align-items:center;justify-content:center;width:52px;height:52px;border-radius:var(--radius-md);">🎵</div>
+          <div class="feed-card-full-body">
+            <div class="feed-card-full-title">Konzertvorverkäufe</div>
+            <p class="feed-card-full-desc">Keine ausverkauften Shows mehr verpassen – Vorverkaufsstarts von Konzerten und Touren landen automatisch in deinem Kalender.</p>
+            <div class="feed-card-full-footer">
+              <span class="badge badge-premium">Premium – ab 3 €/Monat</span>
+              <span class="feed-compat">🍎 🗓️ 📧</span>
+              <button class="feed-sub-btn btn-sm" data-subscribe="konzerte" data-title="Konzertvorverkäufe">+ Abonnieren</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="feed-card-full" data-cat="events" role="listitem">
+          <div class="feed-icon" style="background:var(--amber-50);font-size:24px;display:flex;align-items:center;justify-content:center;width:52px;height:52px;border-radius:var(--radius-md);">🛒</div>
+          <div class="feed-card-full-body">
+            <div class="feed-card-full-title">Sale-Kalender</div>
+            <p class="feed-card-full-desc">Black Friday, Schlussverkauf, Amazon Prime Day, verkaufsoffene Sonntage – nie wieder einen Sale verpassen.</p>
+            <div class="feed-card-full-footer">
+              <span class="badge badge-free">Gratis</span>
+              <span class="feed-compat">🍎 🗓️ 📧</span>
+              <button class="feed-sub-btn btn-sm" data-subscribe="sale-kalender" data-title="Sale-Kalender">+ Abonnieren</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- BERLIN -->
+        <div class="feed-card-full" data-cat="berlin" role="listitem">
+          <div class="feed-icon" style="background:var(--blue-50);font-size:24px;display:flex;align-items:center;justify-content:center;width:52px;height:52px;border-radius:var(--radius-md);">🗺️</div>
+          <div class="feed-card-full-body">
+            <div class="feed-card-full-title">Berlin Events</div>
+            <p class="feed-card-full-desc">Flohmärkte, Konzerte, Outdoor Kinos, Straßenfeste, Lesungen, Kunstausstellungen und Kiez-Aktionen – kuratiert für Berlin.</p>
+            <div class="feed-card-full-footer">
+              <span class="badge badge-free">Gratis</span>
+              <span class="feed-compat">🍎 🗓️ 📧</span>
+              <button class="feed-sub-btn btn-sm" data-subscribe="berlin-events" data-title="Berlin Events">+ Abonnieren</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="feed-card-full" data-cat="berlin" role="listitem">
+          <div class="feed-icon" style="background:var(--blue-50);font-size:24px;display:flex;align-items:center;justify-content:center;width:52px;height:52px;border-radius:var(--radius-md);">🏴</div>
+          <div class="feed-card-full-body">
+            <div class="feed-card-full-title">Flohmarktkalender Berlin</div>
+            <p class="feed-card-full-desc">Mauerpark, Boxhagener Platz, RAW-Gelände und alle anderen Berliner Flohmärkte – wann, wo und mit Tipps zur besten Ankunftszeit.</p>
+            <div class="feed-card-full-footer">
+              <span class="badge badge-free">Gratis</span>
+              <span class="feed-compat">🍎 🗓️ 📧</span>
+              <button class="feed-sub-btn btn-sm" data-subscribe="flohmarkt-berlin" data-title="Flohmarktkalender Berlin">+ Abonnieren</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- LIFESTYLE -->
+        <div class="feed-card-full" data-cat="lifestyle" role="listitem">
+          <div class="feed-icon" style="background:var(--amber-50);font-size:24px;display:flex;align-items:center;justify-content:center;width:52px;height:52px;border-radius:var(--radius-md);">📖</div>
+          <div class="feed-card-full-body">
+            <div class="feed-card-full-title">Tägliche Weisheit (Stoizismus)</div>
+            <p class="feed-card-full-desc">Jeden Tag ein stoisches Zitat als Kalendereintrag – direkt neben deinen Terminen. Macht den Kalender zu einem Ort der Inspiration.</p>
+            <div class="feed-card-full-footer">
+              <span class="badge badge-premium">Premium – ab 3 €/Monat</span>
+              <span class="feed-compat">🍎 🗓️ 📧</span>
+              <button class="feed-sub-btn btn-sm" data-subscribe="stoizismus" data-title="Tägliche Weisheit">+ Abonnieren</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="feed-card-full" data-cat="lifestyle" role="listitem">
+          <div class="feed-icon" style="background:var(--pink-50);font-size:24px;display:flex;align-items:center;justify-content:center;width:52px;height:52px;border-radius:var(--radius-md);">♻️</div>
+          <div class="feed-card-full-body">
+            <div class="feed-card-full-title">Sperrmüll & Müllabfuhr (je Bezirk)</div>
+            <p class="feed-card-full-desc">Wann kommt der Sperrmüll, wann die Gelbe Tonne? Automatische Abfuhrtermine für deinen Berliner Bezirk.</p>
+            <div class="feed-card-full-footer">
+              <span class="badge badge-free">Gratis</span>
+              <span class="feed-compat">🍎 🗓️ 📧</span>
+              <button class="feed-sub-btn btn-sm" data-subscribe="muell-berlin" data-title="Sperrmüll & Müllabfuhr Berlin">+ Abonnieren</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- FRISTEN -->
+        <div class="feed-card-full" data-cat="fristen" role="listitem">
+          <div class="feed-icon" style="background:var(--amber-50);font-size:24px;display:flex;align-items:center;justify-content:center;width:52px;height:52px;border-radius:var(--radius-md);">📄</div>
+          <div class="feed-card-full-body">
+            <div class="feed-card-full-title">Kündigungsfristen & Wechselfristen</div>
+            <p class="feed-card-full-desc">Strom, Gas, Versicherung, Mobilfunk – Erinnerungen zu Kündigungsfristen direkt im Kalender, bevor die automatische Verlängerung greift.</p>
+            <div class="feed-card-full-footer">
+              <span class="badge badge-free">Gratis</span>
+              <span class="feed-compat">🍎 🗓️ 📧</span>
+              <button class="feed-sub-btn btn-sm" data-subscribe="kuendigungsfristen" data-title="Kündigungsfristen">+ Abonnieren</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="feed-card-full" data-cat="fristen" role="listitem">
+          <div class="feed-icon" style="background:var(--amber-50);font-size:24px;display:flex;align-items:center;justify-content:center;width:52px;height:52px;border-radius:var(--radius-md);">🏛️</div>
+          <div class="feed-card-full-body">
+            <div class="feed-card-full-title">Steuer- & Behördenfristen</div>
+            <p class="feed-card-full-desc">Steuererklärung, Kfz-Fristen, Ummeldung – wichtige Behördenfristen automatisch im Blick.</p>
+            <div class="feed-card-full-footer">
+              <span class="badge badge-free">Gratis</span>
+              <span class="feed-compat">🍎 🗓️ 📧</span>
+              <button class="feed-sub-btn btn-sm" data-subscribe="steuerfristen" data-title="Steuer- & Behördenfristen">+ Abonnieren</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="feed-card-full" data-cat="fristen" role="listitem">
+          <div class="feed-icon" style="background:var(--amber-50);font-size:24px;display:flex;align-items:center;justify-content:center;width:52px;height:52px;border-radius:var(--radius-md);">🏫</div>
+          <div class="feed-card-full-body">
+            <div class="feed-card-full-title">Schulferien & Brückentage</div>
+            <p class="feed-card-full-desc">Alle Schulferien und Brückentage je Bundesland – automatisch im Kalender, immer für das aktuelle und nächste Jahr.</p>
+            <div class="feed-card-full-footer">
+              <span class="badge badge-free">Gratis</span>
+              <span class="feed-compat">🍎 🗓️ 📧</span>
+              <button class="feed-sub-btn btn-sm" data-subscribe="schulferien" data-title="Schulferien & Brückentage">+ Abonnieren</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- SPORT -->
+        <div class="feed-card-full" data-cat="sport" role="listitem">
+          <div class="feed-icon" style="background:var(--green-50);font-size:24px;display:flex;align-items:center;justify-content:center;width:52px;height:52px;border-radius:var(--radius-md);">⚽</div>
+          <div class="feed-card-full-body">
+            <div class="feed-card-full-title">WM 2026 – alle Spiele</div>
+            <p class="feed-card-full-desc">Alle Spiele der Fußball-Weltmeisterschaft 2026 – live aktualisiert mit Spielzeiten, Gruppen und Ergebnissen direkt im Kalender.</p>
+            <div class="feed-card-full-footer">
+              <span class="badge badge-free">Gratis</span>
+              <span class="feed-compat">🍎 🗓️ 📧</span>
+              <button class="feed-sub-btn btn-sm" data-subscribe="wm-2026" data-title="WM 2026">+ Abonnieren</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="feed-card-full" data-cat="sport" role="listitem">
+          <div class="feed-icon" style="background:var(--green-50);font-size:24px;display:flex;align-items:center;justify-content:center;width:52px;height:52px;border-radius:var(--radius-md);">🏃</div>
+          <div class="feed-card-full-body">
+            <div class="feed-card-full-title">Marathon- & Lauf-Anmeldungen</div>
+            <p class="feed-card-full-desc">Anmeldefristen und Startdaten für die größten Marathons und Läufe in Deutschland – nie wieder zu spät anmelden.</p>
+            <div class="feed-card-full-footer">
+              <span class="badge badge-free">Gratis</span>
+              <span class="feed-compat">🍎 🗓️ 📧</span>
+              <button class="feed-sub-btn btn-sm" data-subscribe="marathon" data-title="Marathon- & Lauf-Anmeldungen">+ Abonnieren</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div id="no-results" class="no-results" style="display:none;" aria-live="polite">
+        Kein Feed gefunden für deine Suche. <a href="#" onclick="document.getElementById('feed-search').value='';document.querySelector('[data-cat=all]').click();return false;" style="color:var(--violet-500);">Zurücksetzen</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section style="padding:0 24px 80px;" aria-label="Feed vorschlagen">
+    <div class="container">
+      <div style="background:var(--violet-50);border-radius:var(--radius-xl);padding:40px;text-align:center;border:1px solid var(--violet-100);">
+        <h2 style="font-size:22px;font-weight:500;color:var(--violet-900);margin-bottom:8px;">Deinen Feed nicht gefunden?</h2>
+        <p style="font-size:15px;color:var(--gray-500);max-width:400px;margin:0 auto 20px;">Sag uns, welchen Kalender du dir wünschst – wir nehmen Ideen ernst und bauen, was gefragt wird.</p>
+        <a href="mailto:hallo@calendarqueen.de?subject=Feed-Idee" class="btn btn-primary">Feed vorschlagen →</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer" aria-label="Seitenfu&szlig;">
+  <div class="footer-inner">
+    <div class="footer-logo-area">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
+        <div class="nav-logo-icon" aria-hidden="true">🗓️</div>
+        <span style="font-size:16px;font-weight:600;color:var(--white);">Calendar Queen</span>
+      </div>
+      <p>Feed your Calendar.<br>Kuratierte Kalender-Feeds für ein lebendigeres Leben.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Feeds</h4>
+      <a href="feeds.html">Alle Feeds</a>
+      <a href="feeds.html?cat=familie">Familie & Baby</a>
+      <a href="feeds.html?cat=natur">Natur & Garten</a>
+      <a href="feeds.html?cat=events">Events</a>
+    </div>
+    <div class="footer-col">
+      <h4>Infos</h4>
+      <a href="index.html#how">So funktionierts</a>
+      <a href="index.html#faq">FAQ</a>
+      <a href="mailto:hallo@calendarqueen.de">Kontakt</a>
+    </div>
+    <div class="footer-col">
+      <h4>Rechtliches</h4>
+      <a href="impressum.html">Impressum</a>
+      <a href="datenschutz.html">Datenschutz</a>
+      <a href="nutzungsbedingungen.html">Nutzungsbedingungen</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Calendar Queen. Alle Rechte vorbehalten.</p>
+    <div class="footer-legal">
+      <a href="impressum.html">Impressum</a>
+      <a href="datenschutz.html">Datenschutz</a>
+      <a href="nutzungsbedingungen.html">AGB</a>
+    </div>
+  </div>
+</footer>
+
+<div id="cookie-banner" class="cookie-banner" role="dialog" aria-live="polite" aria-label="Cookie-Hinweis">
+  <p>Wir verwenden technisch notwendige Cookies. Weitere Infos in unserer <a href="datenschutz.html">Datenschutzerklärung</a>.</p>
+  <div class="cookie-actions">
+    <button class="cookie-decline" id="cookie-decline">Nur notwendige</button>
+    <button class="cookie-accept" id="cookie-accept">Alles akzeptieren</button>
+  </div>
+</div>
+
+<script src="js/main.js"></script>
+<script>
+  // Update count label
+  const cards = document.querySelectorAll('.feed-card-full[data-cat]');
+  function updateCount() {
+    const visible = Array.from(cards).filter(c => c.style.display !== 'none').length;
+    const label = document.getElementById('count-label');
+    if (label) label.textContent = visible + ' Feed' + (visible !== 1 ? 's' : '') + ' angezeigt';
+  }
+  // Call after filter init
+  setTimeout(updateCount, 100);
+  document.addEventListener('click', e => {
+    if (e.target.classList.contains('cat-pill')) setTimeout(updateCount, 50);
+  });
+  document.getElementById('feed-search')?.addEventListener('input', () => setTimeout(updateCount, 50));
+
+  // aria-pressed on pills
+  document.querySelectorAll('.cat-pill').forEach(pill => {
+    pill.addEventListener('click', () => {
+      document.querySelectorAll('.cat-pill').forEach(p => p.setAttribute('aria-pressed', 'false'));
+      pill.setAttribute('aria-pressed', 'true');
+    });
+  });
+</script>
+</body>
+</html>
