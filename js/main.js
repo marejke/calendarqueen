@@ -1,241 +1,219 @@
-/* =============================================
-   CALENDAR QUEEN — Main JavaScript
-   ============================================= */
+'use strict';
 
 document.addEventListener('DOMContentLoaded', () => {
   initNav();
   initCookieBanner();
+  initCalendarWidget();
   initFeedFilter();
-  initCalPreview();
   initSubscribeButtons();
+  initFaqAccordion();
   initFadeIn();
-  highlightActiveNavLink();
 });
 
-/* ---------- Navigation (hamburger) ---------- */
 function initNav() {
-  const hamburger = document.getElementById('hamburger');
-  const mobileMenu = document.getElementById('mobile-menu');
-  if (!hamburger || !mobileMenu) return;
-
-  hamburger.addEventListener('click', () => {
-    const open = mobileMenu.style.display === 'flex';
-    mobileMenu.style.display = open ? 'none' : 'flex';
-    hamburger.setAttribute('aria-expanded', String(!open));
+  const btn = document.getElementById('hamburger');
+  const menu = document.getElementById('mobile-menu');
+  if (!btn || !menu) return;
+  btn.addEventListener('click', () => {
+    const open = menu.style.display === 'flex';
+    menu.style.display = open ? 'none' : 'flex';
+    btn.setAttribute('aria-expanded', String(!open));
   });
-
   document.addEventListener('keydown', e => {
-    if (e.key === 'Escape' && mobileMenu.style.display === 'flex') {
-      mobileMenu.style.display = 'none';
-      hamburger.setAttribute('aria-expanded', 'false');
+    if (e.key === 'Escape' && menu.style.display === 'flex') {
+      menu.style.display = 'none';
+      btn.setAttribute('aria-expanded', 'false');
+      btn.focus();
     }
   });
-}
-
-function highlightActiveNavLink() {
   const path = window.location.pathname.split('/').pop() || 'index.html';
-  document.querySelectorAll('.nav-links a').forEach(a => {
-    const href = a.getAttribute('href') || '';
-    if (href === path || (path === 'index.html' && href === '#')) {
-      a.classList.add('active');
+  document.querySelectorAll('.nav-links a, .mobile-menu a').forEach(a => {
+    const href = (a.getAttribute('href') || '').split('#')[0].split('?')[0];
+    if (href === path || (path === '' && href === 'index.html')) {
+      a.setAttribute('aria-current', 'page');
     }
   });
 }
 
-/* ---------- Cookie Banner ---------- */
 function initCookieBanner() {
   const banner = document.getElementById('cookie-banner');
   if (!banner) return;
-
-  if (localStorage.getItem('cq_cookie_consent')) {
-    banner.classList.add('hidden');
-    return;
-  }
-
+  if (localStorage.getItem('cq_consent')) { banner.classList.add('hidden'); return; }
   document.getElementById('cookie-accept')?.addEventListener('click', () => {
-    localStorage.setItem('cq_cookie_consent', 'accepted');
+    localStorage.setItem('cq_consent', 'accepted');
     banner.classList.add('hidden');
   });
   document.getElementById('cookie-decline')?.addEventListener('click', () => {
-    localStorage.setItem('cq_cookie_consent', 'declined');
+    localStorage.setItem('cq_consent', 'essential');
     banner.classList.add('hidden');
   });
 }
 
-/* ---------- Feed Filtering ---------- */
+function initCalendarWidget() {
+  const daysEl  = document.getElementById('cal-days');
+  const chipsEl = document.getElementById('cal-chips');
+  const monthEl = document.getElementById('cal-month-label');
+  if (!daysEl) return;
+
+  const MONTHS = ['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'];
+  const EVENTS = {
+    6: { 10:[{t:'Vollmond',s:'Mondphasen-Feed',c:'#E68B71'}], 19:[{t:'Flohmarkt Mauerpark',s:'Berlin Events',c:'#C4C1BE'}], 20:[{t:'Wachstumsschub – Woche 12',s:'Babyjahr-Feed',c:'#E68B71'}], 25:[{t:'Neumond',s:'Mondphasen-Feed',c:'#C4C1BE'}] },
+    7: { 1:[{t:'Brombeeren – Erntezeit',s:'Kräuter Berlin',c:'#C4C1BE'}], 9:[{t:'Vollmond – Störmond',s:'Mondphasen-Feed',c:'#E68B71'}], 11:[{t:'Perseiden – Meteorschauer',s:'Astronomie-Feed',c:'#C4C1BE'}], 23:[{t:'Neumond',s:'Mondphasen-Feed',c:'#C4C1BE'}] },
+    8: { 7:[{t:'Vollmond – Erntemon',s:'Mondphasen-Feed',c:'#E68B71'}], 13:[{t:'Flohmarkt Mauerpark',s:'Berlin Events',c:'#C4C1BE'}], 21:[{t:'Neumond',s:'Mondphasen-Feed',c:'#C4C1BE'}] }
+  };
+
+  const today = new Date(2026, 6, 18);
+  let cur = new Date(today.getFullYear(), today.getMonth(), 1);
+
+  function render() {
+    const m = cur.getMonth(), y = cur.getFullYear();
+    monthEl.textContent = MONTHS[m] + ' ' + y;
+
+    const firstDay = new Date(y, m, 1).getDay();
+    const startOffset = firstDay === 0 ? 6 : firstDay - 1;
+    const daysInMonth = new Date(y, m + 1, 0).getDate();
+    const daysInPrev  = new Date(y, m, 0).getDate();
+    const monthEvs    = EVENTS[m] || {};
+
+    daysEl.innerHTML = '';
+    for (let i = startOffset - 1; i >= 0; i--) {
+      const d = document.createElement('div');
+      d.className = 'cal-day other-month';
+      d.textContent = daysInPrev - i;
+      daysEl.appendChild(d);
+    }
+    for (let day = 1; day <= daysInMonth; day++) {
+      const d = document.createElement('div');
+      d.className = 'cal-day';
+      if (y === today.getFullYear() && m === today.getMonth() && day === today.getDate()) d.classList.add('today');
+      if (monthEvs[day]) d.classList.add('has-event');
+      d.textContent = day;
+      daysEl.appendChild(d);
+    }
+    const remaining = daysEl.children.length % 7 === 0 ? 0 : 7 - (daysEl.children.length % 7);
+    for (let i = 1; i <= remaining; i++) {
+      const d = document.createElement('div');
+      d.className = 'cal-day other-month';
+      d.textContent = i;
+      daysEl.appendChild(d);
+    }
+
+    chipsEl.innerHTML = '';
+    Object.entries(monthEvs).sort((a,b) => +a[0] - +b[0]).slice(0,4).forEach(([day, items]) => {
+      items.forEach(ev => {
+        const chip = document.createElement('div');
+        chip.className = 'cal-chip';
+        chip.style.background = ev.c === '#E68B71' ? 'rgba(230,139,113,0.12)' : 'rgba(196,193,190,0.2)';
+        chip.style.color = ev.c === '#E68B71' ? '#C0522F' : '#444441';
+        const dot = `<span style="width:7px;height:7px;border-radius:50%;background:${ev.c};flex-shrink:0;display:inline-block;margin-top:1px"></span>`;
+        chip.innerHTML = `${dot}<span style="font-weight:600;min-width:22px">${day}.</span>${ev.t} <span style="opacity:.55;font-size:10px;margin-left:auto">· ${ev.s}</span>`;
+        chipsEl.appendChild(chip);
+      });
+    });
+  }
+
+  document.getElementById('cal-prev')?.addEventListener('click', () => { cur = new Date(cur.getFullYear(), cur.getMonth() - 1, 1); render(); });
+  document.getElementById('cal-next')?.addEventListener('click', () => { cur = new Date(cur.getFullYear(), cur.getMonth() + 1, 1); render(); });
+  render();
+}
+
 function initFeedFilter() {
-  const pills = document.querySelectorAll('.cat-pill[data-cat]');
-  const searchInput = document.getElementById('feed-search');
-  const cards = document.querySelectorAll('.feed-card[data-cat]');
-  const noResults = document.getElementById('no-results');
+  const pills  = document.querySelectorAll('.cat-pill[data-cat]');
+  const search = document.getElementById('feed-search');
+  const cards  = document.querySelectorAll('.feed-card[data-cat]');
+  const noRes  = document.getElementById('no-results');
+  const label  = document.getElementById('count-label');
+  if (!pills.length && !search) return;
 
-  if (!pills.length && !searchInput) return;
+  let activeCat = 'all', query = '';
 
-  let activeCategory = 'all';
-  let searchQuery = '';
-
-  function filterCards() {
+  function filter() {
     let visible = 0;
     cards.forEach(card => {
-      const cat = card.getAttribute('data-cat') || '';
-      const title = (card.querySelector('.feed-card-title')?.textContent || '').toLowerCase();
-      const desc  = (card.querySelector('.feed-card-desc')?.textContent || '').toLowerCase();
-
-      const catMatch = activeCategory === 'all' || cat === activeCategory;
-      const queryMatch = !searchQuery ||
-        title.includes(searchQuery) || desc.includes(searchQuery);
-
-      if (catMatch && queryMatch) {
-        card.style.display = '';
-        visible++;
-      } else {
-        card.style.display = 'none';
-      }
+      const catOk   = activeCat === 'all' || card.getAttribute('data-cat') === activeCat;
+      const queryOk = !query || (card.textContent || '').toLowerCase().includes(query);
+      const show = catOk && queryOk;
+      card.style.display = show ? '' : 'none';
+      if (show) visible++;
     });
-
-    if (noResults) noResults.style.display = visible === 0 ? 'block' : 'none';
+    if (noRes) noRes.style.display = visible === 0 ? 'block' : 'none';
+    if (label) label.textContent = `${visible} Feed${visible !== 1 ? 's' : ''} angezeigt`;
   }
 
-  pills.forEach(pill => {
-    pill.addEventListener('click', () => {
-      pills.forEach(p => p.classList.remove('active'));
-      pill.classList.add('active');
-      activeCategory = pill.getAttribute('data-cat');
-      filterCards();
-    });
-    pill.addEventListener('keydown', e => {
-      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); pill.click(); }
+  pills.forEach(p => {
+    p.addEventListener('click', () => {
+      pills.forEach(x => { x.classList.remove('active'); x.setAttribute('aria-pressed','false'); });
+      p.classList.add('active'); p.setAttribute('aria-pressed','true');
+      activeCat = p.getAttribute('data-cat');
+      filter();
     });
   });
-
-  if (searchInput) {
-    searchInput.addEventListener('input', () => {
-      searchQuery = searchInput.value.trim().toLowerCase();
-      filterCards();
-    });
-  }
+  search?.addEventListener('input', () => { query = search.value.trim().toLowerCase(); filter(); });
+  filter();
 }
 
-/* ---------- Calendar Preview Animation ---------- */
-function initCalPreview() {
-  const days = document.querySelectorAll('.cal-day.has-event');
-  if (!days.length) return;
-  let i = 0;
-  setInterval(() => {
-    days.forEach(d => d.style.background = '');
-    if (days[i]) {
-      days[i].style.background = 'rgba(245,200,66,0.15)';
-      days[i].style.borderRadius = '6px';
-    }
-    i = (i + 1) % days.length;
-  }, 1200);
-}
-
-/* ---------- Subscribe Buttons ---------- */
 function initSubscribeButtons() {
-  document.querySelectorAll('[data-subscribe]').forEach(btn => {
-    btn.addEventListener('click', function (e) {
-      e.preventDefault();
-      e.stopPropagation();
-      const feedId = this.getAttribute('data-subscribe');
-      const feedTitle = this.getAttribute('data-title') || 'Feed';
-      subscribeToFeed(feedId, feedTitle, this);
+  document.querySelectorAll('[data-subscribe]').forEach(el => {
+    el.addEventListener('click', e => {
+      e.preventDefault(); e.stopPropagation();
+      showSubscribeModal(el.getAttribute('data-subscribe'), el.getAttribute('data-title') || 'Feed');
     });
   });
 }
 
-function subscribeToFeed(feedId, title, btn) {
+function showSubscribeModal(feedId, title) {
+  document.getElementById('cq-modal')?.remove();
   const icsUrl = `feeds/${feedId}.ics`;
+  const gcal   = `https://calendar.google.com/calendar/r/settings/addbyurl?url=${encodeURIComponent(window.location.origin + '/' + icsUrl)}`;
 
-  const original = btn.innerHTML;
-  btn.innerHTML = '✓ Abonniert!';
-  btn.style.background = 'var(--green-700)';
-  btn.disabled = true;
+  const overlay = document.createElement('div');
+  overlay.id = 'cq-modal';
+  overlay.className = 'modal-overlay';
+  overlay.setAttribute('role','dialog');
+  overlay.setAttribute('aria-modal','true');
+  overlay.setAttribute('aria-label', title + ' abonnieren');
+  overlay.innerHTML = `
+    <div class="modal-box">
+      <button class="modal-close" aria-label="Schließen">×</button>
+      <p class="eyebrow" style="margin-bottom:10px">Feed abonnieren</p>
+      <h2 style="font-size:20px;font-weight:600;letter-spacing:-.02em;margin-bottom:8px;color:var(--black)">${title}</h2>
+      <p style="font-size:13px;color:var(--black-soft);line-height:1.6;margin-bottom:20px">Wähle deine Kalender-App:</p>
+      <a href="${icsUrl}" download class="modal-option">
+        <div class="modal-option-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8m-4-4v4"/></svg></div>
+        <div><div class="modal-option-title">Apple Calendar</div><div class="modal-option-sub">.ics herunterladen → In Kalender öffnen</div></div>
+      </a>
+      <a href="${gcal}" target="_blank" rel="noopener noreferrer" class="modal-option">
+        <div class="modal-option-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
+        <div><div class="modal-option-title">Google Calendar</div><div class="modal-option-sub">Direkt zu Google Kalender hinzufügen</div></div>
+      </a>
+      <a href="${icsUrl}" download class="modal-option">
+        <div class="modal-option-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+        <div><div class="modal-option-title">Outlook</div><div class="modal-option-sub">.ics herunterladen → In Outlook importieren</div></div>
+      </a>
+      <p style="font-size:11px;color:var(--black-soft);margin-top:14px;text-align:center">Kompatibel mit Apple, Google und Outlook</p>
+    </div>`;
 
-  // Trigger .ics download
-  const a = document.createElement('a');
-  a.href = icsUrl;
-  a.download = `${feedId}.ics`;
-  document.body.appendChild(a);
-  a.click();
-  document.body.removeChild(a);
-
-  // Show modal with further instructions
-  showSubscribeModal(title, icsUrl);
-
-  setTimeout(() => {
-    btn.innerHTML = original;
-    btn.style.background = '';
-    btn.disabled = false;
-  }, 3000);
+  overlay.querySelector('.modal-close').addEventListener('click', () => overlay.remove());
+  overlay.addEventListener('click', e => { if (e.target === overlay) overlay.remove(); });
+  const esc = e => { if (e.key === 'Escape') { overlay.remove(); document.removeEventListener('keydown', esc); } };
+  document.addEventListener('keydown', esc);
+  document.body.appendChild(overlay);
+  overlay.querySelector('.modal-close').focus();
 }
 
-function showSubscribeModal(title, icsUrl) {
-  const existing = document.getElementById('subscribe-modal');
-  if (existing) existing.remove();
-
-  const modal = document.createElement('div');
-  modal.id = 'subscribe-modal';
-  modal.setAttribute('role', 'dialog');
-  modal.setAttribute('aria-modal', 'true');
-  modal.setAttribute('aria-label', `${title} abonnieren`);
-  modal.style.cssText = `
-    position: fixed; inset: 0; background: rgba(26,26,46,0.7);
-    display: flex; align-items: center; justify-content: center;
-    z-index: 2000; padding: 24px;
-  `;
-  modal.innerHTML = `
-    <div style="background:#fff;border-radius:20px;padding:36px;max-width:440px;width:100%;position:relative;">
-      <button onclick="this.closest('#subscribe-modal').remove()"
-        aria-label="Schließen"
-        style="position:absolute;top:16px;right:16px;width:32px;height:32px;border-radius:50%;border:1px solid var(--gray-200);background:var(--gray-50);cursor:pointer;font-size:18px;color:var(--gray-500);display:flex;align-items:center;justify-content:center;font-family:var(--font-body);">×</button>
-      <div style="font-size:32px;margin-bottom:12px;">📅</div>
-      <h2 style="font-size:20px;font-weight:600;color:var(--violet-900);margin-bottom:8px;">„${title}" abonnieren</h2>
-      <p style="font-size:14px;color:var(--gray-500);line-height:1.6;margin-bottom:24px;">
-        Wähle deinen Kalender und folge den Anweisungen:
-      </p>
-      <div style="display:flex;flex-direction:column;gap:10px;">
-        <a href="${icsUrl}" style="display:flex;align-items:center;gap:12px;background:var(--gray-50);border:1px solid var(--gray-200);border-radius:12px;padding:14px 16px;text-decoration:none;color:var(--gray-700);font-size:14px;font-weight:500;transition:background 0.2s;" onmouseover="this.style.background='var(--violet-50)'" onmouseout="this.style.background='var(--gray-50)'">
-          <span style="font-size:22px;">🍎</span>
-          <div><div style="font-weight:600;">Apple Calendar</div><div style="font-size:12px;color:var(--gray-400);">.ics Datei öffnen → Zum Kalender hinzufügen</div></div>
-        </a>
-        <a href="https://calendar.google.com/calendar/r/settings/addbyurl?url=${encodeURIComponent(window.location.origin + '/' + icsUrl)}" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:12px;background:var(--gray-50);border:1px solid var(--gray-200);border-radius:12px;padding:14px 16px;text-decoration:none;color:var(--gray-700);font-size:14px;font-weight:500;transition:background 0.2s;" onmouseover="this.style.background='var(--violet-50)'" onmouseout="this.style.background='var(--gray-50)'">
-          <span style="font-size:22px;">🗓️</span>
-          <div><div style="font-weight:600;">Google Calendar</div><div style="font-size:12px;color:var(--gray-400);">Direkt in Google Kalender hinzufügen</div></div>
-        </a>
-        <a href="${icsUrl}" style="display:flex;align-items:center;gap:12px;background:var(--gray-50);border:1px solid var(--gray-200);border-radius:12px;padding:14px 16px;text-decoration:none;color:var(--gray-700);font-size:14px;font-weight:500;transition:background 0.2s;" onmouseover="this.style.background='var(--violet-50)'" onmouseout="this.style.background='var(--gray-50)'">
-          <span style="font-size:22px;">📧</span>
-          <div><div style="font-weight:600;">Outlook</div><div style="font-size:12px;color:var(--gray-400);">.ics öffnen oder per „Kalender importieren" in Outlook</div></div>
-        </a>
-      </div>
-      <p style="font-size:12px;color:var(--gray-400);margin-top:16px;text-align:center;">Die .ics-Datei wurde automatisch heruntergeladen.</p>
-    </div>
-  `;
-
-  modal.addEventListener('click', e => { if (e.target === modal) modal.remove(); });
-  document.addEventListener('keydown', function handler(e) {
-    if (e.key === 'Escape') { modal.remove(); document.removeEventListener('keydown', handler); }
-  });
-
-  document.body.appendChild(modal);
-  modal.querySelector('button').focus();
-}
-
-/* ---------- Fade-in on scroll ---------- */
-function initFadeIn() {
-  const els = document.querySelectorAll('.fade-in');
-  if (!els.length) return;
-  if (!('IntersectionObserver' in window)) {
-    els.forEach(el => el.classList.add('visible'));
-    return;
-  }
-  const obs = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        obs.unobserve(entry.target);
-      }
+function initFaqAccordion() {
+  document.querySelectorAll('.faq-q').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!expanded));
+      document.getElementById(btn.getAttribute('aria-controls'))?.classList.toggle('open', !expanded);
     });
-  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-  els.forEach(el => obs.observe(el));
+  });
+}
+
+function initFadeIn() {
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 }

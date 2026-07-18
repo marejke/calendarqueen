@@ -1,15 +1,40 @@
 BEGIN:VCALENDAR
 VERSION:2.0
-PRODID:-//Calendar Queen//schulferien//DE
+PRODID:-//Calendar Queen//Schulferien Berlin 2026//DE
 CALSCALE:GREGORIAN
 METHOD:PUBLISH
-X-WR-CALNAME:📅 schulferien – Calendar Queen
-X-WR-CALDESC:Calendar Queen Feed – schulferien. Dieser Feed wird demnächst mit Inhalten befüllt.
+X-WR-CALNAME:Schulferien & Brückentage Berlin – Calendar Queen
+X-WR-CALDESC:Schulferien Berlin/Brandenburg 2026 und Brückentage Deutschland.
 X-WR-TIMEZONE:Europe/Berlin
+X-PUBLISHED-TTL:PT24H
 BEGIN:VEVENT
-UID:schulferien-coming-soon@calendarqueen.de
-DTSTART;VALUE=DATE:20250101
-SUMMARY:📅 schulferien – Feed abonniert!
-DESCRIPTION:Du hast den schulferien-Feed von Calendar Queen erfolgreich abonniert. Inhalte folgen in Kürze – wir befüllen den Feed laufend. Danke für dein Vertrauen!\n\nFragen? hallo@calendarqueen.de
+UID:cq-ferien-berlin-sommer-2026@calendarqueen.de
+DTSTART;VALUE=DATE:20260618
+DTEND;VALUE=DATE:20260801
+SUMMARY:Sommerferien Berlin/Brandenburg 2026
+DESCRIPTION:Schulferien Berlin und Brandenburg\, Sommerferienzeitraum 2026. Genaue Daten unter: berlin.de/sen/bildung/schule/ferien\n\nHINWEIS: Reisen und Aktivitäten in dieser Zeit frühzeitig buchen.
+CATEGORIES:Schulferien,Berlin
+END:VEVENT
+BEGIN:VEVENT
+UID:cq-ferien-berlin-herbst-2026@calendarqueen.de
+DTSTART;VALUE=DATE:20261019
+DTEND;VALUE=DATE:20261031
+SUMMARY:Herbstferien Berlin/Brandenburg 2026
+DESCRIPTION:Herbstferien Berlin und Brandenburg ca. 19.-30. Oktober 2026. Genaue Daten: berlin.de/sen/bildung
+CATEGORIES:Schulferien,Berlin
+END:VEVENT
+BEGIN:VEVENT
+UID:cq-bruecke-marien-20260815@calendarqueen.de
+DTSTART;VALUE=DATE:20260815
+SUMMARY:Mariä Himmelfahrt (Bayern/Saarl.)
+DESCRIPTION:Gesetzlicher Feiertag in Bayern und Saarland. In anderen Bundesländern kein Feiertag.
+CATEGORIES:Feiertag,Brückentag
+END:VEVENT
+BEGIN:VEVENT
+UID:cq-bruecke-einheit-20261003@calendarqueen.de
+DTSTART;VALUE=DATE:20261003
+SUMMARY:Tag der Deutschen Einheit – Feiertag
+DESCRIPTION:Gesetzlicher Feiertag in ganz Deutschland. Kein Schultag\, kein Arbeitstag.
+CATEGORIES:Feiertag
 END:VEVENT
 END:VCALENDAR

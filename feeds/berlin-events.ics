@@ -1,15 +1,115 @@
 BEGIN:VCALENDAR
 VERSION:2.0
-PRODID:-//Calendar Queen//berlin-events//DE
+PRODID:-//Calendar Queen//Berlin Events 2026//DE
 CALSCALE:GREGORIAN
 METHOD:PUBLISH
-X-WR-CALNAME:📅 berlin-events – Calendar Queen
-X-WR-CALDESC:Calendar Queen Feed – berlin-events. Dieser Feed wird demnächst mit Inhalten befüllt.
+X-WR-CALNAME:Berlin Events – Calendar Queen
+X-WR-CALDESC:Kuratierte Berlin Events: Flohmärkte, Festivals, Kultur. Juli-Sep 2026.
 X-WR-TIMEZONE:Europe/Berlin
+X-PUBLISHED-TTL:PT24H
 BEGIN:VEVENT
-UID:berlin-events-coming-soon@calendarqueen.de
-DTSTART;VALUE=DATE:20250101
-SUMMARY:📅 berlin-events – Feed abonniert!
-DESCRIPTION:Du hast den berlin-events-Feed von Calendar Queen erfolgreich abonniert. Inhalte folgen in Kürze – wir befüllen den Feed laufend. Danke für dein Vertrauen!\n\nFragen? hallo@calendarqueen.de
+UID:cq-berlin-mauerpark-20260712@calendarqueen.de
+DTSTART;VALUE=DATE:20260712
+SUMMARY:Flohmarkt Mauerpark
+DESCRIPTION:Der legendäre Flohmarkt am Mauerpark in Prenzlauer Berg. Jeden Sonntag von 9-18 Uhr. Vintage, Kunst, Essen, Karaoke-Arena.\nOrt: Bernauer Str. 63-64, 13355 Berlin
+LOCATION:Mauerpark\, Bernauer Str.\, Berlin
+CATEGORIES:Berlin,Flohmarkt
+END:VEVENT
+BEGIN:VEVENT
+UID:cq-berlin-mauerpark-20260719@calendarqueen.de
+DTSTART;VALUE=DATE:20260719
+SUMMARY:Flohmarkt Mauerpark
+DESCRIPTION:Wöchentlicher Flohmarkt am Mauerpark. 9-18 Uhr.
+LOCATION:Mauerpark\, Berlin
+CATEGORIES:Berlin,Flohmarkt
+END:VEVENT
+BEGIN:VEVENT
+UID:cq-berlin-mauerpark-20260726@calendarqueen.de
+DTSTART;VALUE=DATE:20260726
+SUMMARY:Flohmarkt Mauerpark
+DESCRIPTION:Wöchentlicher Flohmarkt am Mauerpark. 9-18 Uhr.
+LOCATION:Mauerpark\, Berlin
+CATEGORIES:Berlin,Flohmarkt
+END:VEVENT
+BEGIN:VEVENT
+UID:cq-berlin-boxhagen-20260711@calendarqueen.de
+DTSTART;VALUE=DATE:20260711
+SUMMARY:Flohmarkt Boxhagener Platz
+DESCRIPTION:Beliebter Flohmarkt in Friedrichshain. Sa 9-16 Uhr (Trödelmarkt) und So 10-18 Uhr (Antikmarkt).\nOrt: Boxhagener Platz, Friedrichshain
+LOCATION:Boxhagener Platz\, Friedrichshain\, Berlin
+CATEGORIES:Berlin,Flohmarkt
+END:VEVENT
+BEGIN:VEVENT
+UID:cq-berlin-boxhagen-20260718@calendarqueen.de
+DTSTART;VALUE=DATE:20260718
+SUMMARY:Flohmarkt Boxhagener Platz
+DESCRIPTION:Wöchentlicher Trödelmarkt Sa/So in Friedrichshain.
+LOCATION:Boxhagener Platz\, Berlin
+CATEGORIES:Berlin,Flohmarkt
+END:VEVENT
+BEGIN:VEVENT
+UID:cq-berlin-strasse17juni-20260712@calendarqueen.de
+DTSTART;VALUE=DATE:20260712
+SUMMARY:Antikmarkt Straße des 17. Juni
+DESCRIPTION:Einer der schönsten Flohmärkte Berlins – jeden Samstag und Sonntag. Antikes, Kunsthandwerk, Trödel.\nOrt: Straße des 17. Juni, Tiergarten (nahe S Tiergarten)
+LOCATION:Straße des 17. Juni\, Berlin Tiergarten
+CATEGORIES:Berlin,Flohmarkt
+END:VEVENT
+BEGIN:VEVENT
+UID:cq-berlin-raw-20260718@calendarqueen.de
+DTSTART;VALUE=DATE:20260718
+SUMMARY:Flohmarkt RAW-Gelände
+DESCRIPTION:Größter Berliner Flohmarkt in Friedrichshain. Sa+So 9-18 Uhr.\nOrt: Revaler Str. 99, Friedrichshain
+LOCATION:RAW-Gelände\, Revaler Str. 99\, Berlin Friedrichshain
+CATEGORIES:Berlin,Flohmarkt
+END:VEVENT
+BEGIN:VEVENT
+UID:cq-berlin-raw-20260808@calendarqueen.de
+DTSTART;VALUE=DATE:20260808
+SUMMARY:Flohmarkt RAW-Gelände
+DESCRIPTION:Großer Berliner Flohmarkt. Sa+So 9-18 Uhr.
+LOCATION:RAW-Gelände\, Berlin
+CATEGORIES:Berlin,Flohmarkt
+END:VEVENT
+BEGIN:VEVENT
+UID:cq-berlin-tempodrom-20260801@calendarqueen.de
+DTSTART;VALUE=DATE:20260801
+SUMMARY:Berliner Sommerfestival (August)
+DESCRIPTION:Open-Air-Konzerte und Festivals im August in Berlin. Prüfe aktuelle Termine auf visitberlin.de
+LOCATION:Berlin
+CATEGORIES:Berlin,Event
+END:VEVENT
+BEGIN:VEVENT
+UID:cq-berlin-mauerpark-20260809@calendarqueen.de
+DTSTART;VALUE=DATE:20260809
+SUMMARY:Flohmarkt Mauerpark
+DESCRIPTION:Wöchentlicher Flohmarkt am Mauerpark. 9-18 Uhr.
+LOCATION:Mauerpark\, Berlin
+CATEGORIES:Berlin,Flohmarkt
+END:VEVENT
+BEGIN:VEVENT
+UID:cq-berlin-mauerpark-20260816@calendarqueen.de
+DTSTART;VALUE=DATE:20260816
+SUMMARY:Flohmarkt Mauerpark
+DESCRIPTION:Wöchentlicher Flohmarkt am Mauerpark. 9-18 Uhr.
+LOCATION:Mauerpark\, Berlin
+CATEGORIES:Berlin,Flohmarkt
+END:VEVENT
+BEGIN:VEVENT
+UID:cq-berlin-tag-der-offenen-tuer-20260905@calendarqueen.de
+DTSTART;VALUE=DATE:20260905
+DTEND;VALUE=DATE:20260907
+SUMMARY:Tag der Offenen Tür Bundesregierung (ca. Termin)
+DESCRIPTION:Jährlich im September öffnen Bundesbehörden ihre Türen. Genaue Termine unter bundesregierung.de
+LOCATION:Berlin Regierungsviertel
+CATEGORIES:Berlin,Event
+END:VEVENT
+BEGIN:VEVENT
+UID:cq-berlin-mauerpark-20260913@calendarqueen.de
+DTSTART;VALUE=DATE:20260913
+SUMMARY:Flohmarkt Mauerpark
+DESCRIPTION:Wöchentlicher Flohmarkt am Mauerpark. 9-18 Uhr.
+LOCATION:Mauerpark\, Berlin
+CATEGORIES:Berlin,Flohmarkt
 END:VEVENT
 END:VCALENDAR

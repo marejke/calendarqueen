@@ -1,15 +1,54 @@
 BEGIN:VCALENDAR
 VERSION:2.0
-PRODID:-//Calendar Queen//astronomie//DE
+PRODID:-//Calendar Queen//Astronomie 2026//DE
 CALSCALE:GREGORIAN
 METHOD:PUBLISH
-X-WR-CALNAME:📅 astronomie – Calendar Queen
-X-WR-CALDESC:Calendar Queen Feed – astronomie. Dieser Feed wird demnächst mit Inhalten befüllt.
+X-WR-CALNAME:Astronomie & Himmel – Calendar Queen
+X-WR-CALDESC:Meteorschauer, Supermonde, Planetenkonstellationen Juli-Sep 2026.
 X-WR-TIMEZONE:Europe/Berlin
+X-PUBLISHED-TTL:PT24H
 BEGIN:VEVENT
-UID:astronomie-coming-soon@calendarqueen.de
-DTSTART;VALUE=DATE:20250101
-SUMMARY:📅 astronomie – Feed abonniert!
-DESCRIPTION:Du hast den astronomie-Feed von Calendar Queen erfolgreich abonniert. Inhalte folgen in Kürze – wir befüllen den Feed laufend. Danke für dein Vertrauen!\n\nFragen? hallo@calendarqueen.de
+UID:cq-astro-perseiden-20260811@calendarqueen.de
+DTSTART;VALUE=DATE:20260811
+DTEND;VALUE=DATE:20260814
+SUMMARY:Perseiden – Meteorschauer (Maximum)
+DESCRIPTION:Die Perseiden sind der bekannteste Meteorschauer des Jahres. Maximum 11.–13. August\, bis zu 100 Sternschnuppen/Stunde möglich.\n\nBESTE BEOBACHTUNG: Ab 22 Uhr\, dunkler Ort außerhalb der Stadt\n\nTIPP: Köpenicker Forst oder Havelland bieten dunklen Himmel.
+CATEGORIES:Astronomie,Meteorschauer
+END:VEVENT
+BEGIN:VEVENT
+UID:cq-astro-saturn-20260803@calendarqueen.de
+DTSTART;VALUE=DATE:20260803
+SUMMARY:Saturn in Opposition – besonders hell
+DESCRIPTION:Saturn steht in Opposition zur Sonne – er ist jetzt die ganze Nacht sichtbar und so hell wie nie. Ringe sind mit einem kleinen Teleskop gut zu sehen.
+CATEGORIES:Astronomie,Planet
+END:VEVENT
+BEGIN:VEVENT
+UID:cq-astro-delta-aquariden-20260728@calendarqueen.de
+DTSTART;VALUE=DATE:20260728
+DTEND;VALUE=DATE:20260730
+SUMMARY:Delta-Aquariden – Meteorschauer
+DESCRIPTION:Der Delta-Aquariden-Meteorschauer mit bis zu 20 Meteoren/Stunde. Gut von der Südhalbkugel sichtbar\, aber auch in Deutschland beobachtbar.\n\nBESTE BEOBACHTUNG: Nach Mitternacht\, südlicher Horizont.
+CATEGORIES:Astronomie,Meteorschauer
+END:VEVENT
+BEGIN:VEVENT
+UID:cq-astro-supermoon-20260809@calendarqueen.de
+DTSTART;VALUE=DATE:20260809
+SUMMARY:Supermond – August Vollmond
+DESCRIPTION:Der Augustvollmond ist 2026 ein Supermond – der Mond steht näher an der Erde und wirkt bis zu 14% größer und 30% heller.\n\nBESTE BEOBACHTUNG: Kurz nach Mondaufgang im Osten – dann wirkt er am größten.
+CATEGORIES:Astronomie,Mond,Supermond
+END:VEVENT
+BEGIN:VEVENT
+UID:cq-astro-iss-20260715@calendarqueen.de
+DTSTART;VALUE=DATE:20260715
+SUMMARY:ISS gut sichtbar über Berlin (Juli)
+DESCRIPTION:Die Internationale Raumstation (ISS) ist im Juli regelmäßig über Berlin sichtbar. Aktuelle Überflugzeiten: heavens-above.com\n\nTypischer Überflug: 2-6 Minuten\, heller als die hellsten Sterne.
+CATEGORIES:Astronomie,ISS
+END:VEVENT
+BEGIN:VEVENT
+UID:cq-astro-herbstbeginn-20260923@calendarqueen.de
+DTSTART;VALUE=DATE:20260923
+SUMMARY:Herbst-Tag-und-Nacht-Gleiche
+DESCRIPTION:Astronomischer Herbstbeginn: Tag und Nacht sind gleich lang (Äquinoktium). Ab heute werden die Nächte länger als die Tage.
+CATEGORIES:Astronomie,Jahreszeit
 END:VEVENT
 END:VCALENDAR

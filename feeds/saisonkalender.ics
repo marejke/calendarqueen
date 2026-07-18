@@ -1,88 +1,66 @@
 BEGIN:VCALENDAR
 VERSION:2.0
-PRODID:-//Calendar Queen//Saisonkalender//DE
+PRODID:-//Calendar Queen//Saisonkalender 2026//DE
 CALSCALE:GREGORIAN
 METHOD:PUBLISH
-X-WR-CALNAME:🌿 Saisonkalender – Calendar Queen
-X-WR-CALDESC:Was hat jetzt Saison? Gemüse, Obst & Kräuter wöchentlich im Überblick – Calendar Queen.
+X-WR-CALNAME:Saisonkalender – Calendar Queen
+X-WR-CALDESC:Was hat gerade Saison? Gemüse, Obst und Kräuter Juli-Sep 2026.
 X-WR-TIMEZONE:Europe/Berlin
+X-PUBLISHED-TTL:PT24H
 BEGIN:VEVENT
-UID:saison-2025-spargel-start@calendarqueen.de
-DTSTART;VALUE=DATE:20250420
-DTEND;VALUE=DATE:20250424
-SUMMARY:🌿 Spargel-Saison beginnt!
-DESCRIPTION:Ab jetzt ist Spargel-Saison. Weißer und grüner Spargel aus Deutschland sind jetzt frisch erhältlich. Die Saison dauert traditionell bis zum Johannistag am 24. Juni.\n\nSaisonal kaufen: Wochenmärkte, Direktvermarkter, Supermarkt-Frischetheke.
-CATEGORIES:Saisonkalender
+UID:cq-saison-heidelbeere-20260701@calendarqueen.de
+DTSTART;VALUE=DATE:20260701
+DTEND;VALUE=DATE:20260831
+SUMMARY:Heidelbeeren – Hauptsaison
+DESCRIPTION:Deutsche Heidelbeeren jetzt frisch! Kultivierte Heidelbeeren im Supermarkt\, wilde Blaubeeren im Wald.\n\nSAISONAL KAUFEN: Wochenmarkt\, direkt beim Erzeuger
+CATEGORIES:Saisonkalender,Obst
 END:VEVENT
 BEGIN:VEVENT
-UID:saison-2025-erdbeeren@calendarqueen.de
-DTSTART;VALUE=DATE:20250515
-DTEND;VALUE=DATE:20250519
-SUMMARY:🍓 Erdbeer-Saison beginnt
-DESCRIPTION:Erdbeeren aus Deutschland sind ab jetzt verfügbar! Jetzt schmecken sie am besten und sind am günstigsten. Lokale Erdbeerfelder zum Selberpflücken öffnen meist Mitte Mai.
-CATEGORIES:Saisonkalender
+UID:cq-saison-bohnen-20260701@calendarqueen.de
+DTSTART;VALUE=DATE:20260701
+DTEND;VALUE=DATE:20260930
+SUMMARY:Bohnen – Hochsaison
+DESCRIPTION:Grüne Bohnen\, Wachsbohnen\, Stangenbohnen – jetzt frisch vom Feld. Kochen\, dünsten\, einlegen.\n\nTIPP: Rohe Bohnen sind giftig – immer kochen!
+CATEGORIES:Saisonkalender,Gemüse
 END:VEVENT
 BEGIN:VEVENT
-UID:saison-2025-spargel-ende@calendarqueen.de
-DTSTART;VALUE=DATE:20250624
-SUMMARY:🌿 Johannistag – Ende der Spargel-Saison
-DESCRIPTION:Heute endet traditionell die Spargel-Saison (Johannistag, 24. Juni). Noch schnell welchen kaufen!
-CATEGORIES:Saisonkalender
+UID:cq-saison-zucchini-20260715@calendarqueen.de
+DTSTART;VALUE=DATE:20260715
+DTEND;VALUE=DATE:20260930
+SUMMARY:Zucchini & Kürbis – Hochsaison
+DESCRIPTION:Zucchini\, Patisson und erste Kürbissorten sind jetzt frisch. Ideal für Sommerküche.
+CATEGORIES:Saisonkalender,Gemüse
 END:VEVENT
 BEGIN:VEVENT
-UID:saison-2025-kirschen@calendarqueen.de
-DTSTART;VALUE=DATE:20250620
-DTEND;VALUE=DATE:20250624
-SUMMARY:🍒 Kirsch-Saison beginnt
-DESCRIPTION:Deutsche Kirschen – jetzt ist die beste Zeit! Süßkirschen aus der Region sind jetzt verfügbar und schmecken am intensivsten.
-CATEGORIES:Saisonkalender
+UID:cq-saison-tomaten-20260720@calendarqueen.de
+DTSTART;VALUE=DATE:20260720
+DTEND;VALUE=DATE:20260930
+SUMMARY:Tomaten – Hochsaison beginnt
+DESCRIPTION:Deutsche Freilandtomaten – jetzt beginnt die beste Zeit! Viele Sorten\, höchste Qualität\, günstigster Preis.\n\nTIPP: Jetzt Tomaten für den Winter einkochen.
+CATEGORIES:Saisonkalender,Gemüse
 END:VEVENT
 BEGIN:VEVENT
-UID:saison-2025-heidelbeeren@calendarqueen.de
-DTSTART;VALUE=DATE:20250715
-DTEND;VALUE=DATE:20250719
-SUMMARY:🫐 Heidelbeer-Saison
-DESCRIPTION:Heidelbeeren aus Deutschland sind jetzt reif. Wilde Heidelbeeren (Blaubeeren) im Wald, Kulturheidelbeeren auf dem Markt.
-CATEGORIES:Saisonkalender
+UID:cq-saison-pflaumen-20260801@calendarqueen.de
+DTSTART;VALUE=DATE:20260801
+DTEND;VALUE=DATE:20260930
+SUMMARY:Pflaumen & Zwetschgen – Erntezeit
+DESCRIPTION:Zwetschgen und Pflaumen aus Deutschland jetzt reif. Ideal für Kuchen\, Marmelade\, Kompott\, Pflaumenmus.
+CATEGORIES:Saisonkalender,Obst
 END:VEVENT
 BEGIN:VEVENT
-UID:saison-2025-pfifferlinge@calendarqueen.de
-DTSTART;VALUE=DATE:20250801
-DTEND;VALUE=DATE:20250805
-SUMMARY:🍄 Pfifferling-Saison
-DESCRIPTION:Pfifferlinge sind jetzt frisch – die Hochsaison für Pfifferlinge in Deutschland läuft von August bis Oktober. Jetzt kaufen oder sammeln!
-CATEGORIES:Saisonkalender
+UID:cq-saison-mais-20260815@calendarqueen.de
+DTSTART;VALUE=DATE:20260815
+DTEND;VALUE=DATE:20260930
+SUMMARY:Zuckermais – Erntezeit
+DESCRIPTION:Frischer Zuckermais vom Feld – nur kurz frisch! Innerhalb von 24h nach der Ernte kochen\, dann sind die Zucker noch nicht in Stärke umgewandelt.
+CATEGORIES:Saisonkalender,Gemüse
 END:VEVENT
 BEGIN:VEVENT
-UID:saison-2025-zwetschgen@calendarqueen.de
-DTSTART;VALUE=DATE:20250815
-DTEND;VALUE=DATE:20250819
-SUMMARY:🍑 Zwetschgen-Saison
-DESCRIPTION:Zwetschgen und Pflaumen aus Deutschland sind jetzt reif. Ideal für Kuchen, Marmelade und Kompott.
-CATEGORIES:Saisonkalender
-END:VEVENT
-BEGIN:VEVENT
-UID:saison-2025-weinlese@calendarqueen.de
-DTSTART;VALUE=DATE:20250920
-DTEND;VALUE=DATE:20250924
-SUMMARY:🍇 Weinlese beginnt
-DESCRIPTION:Die Weinlese startet in den deutschen Anbaugebieten. In Rheinhessen, der Pfalz und am Rhein beginnen jetzt die Ernten. Viele Weingüter bieten Lesehelfer-Tage an.
-CATEGORIES:Saisonkalender
-END:VEVENT
-BEGIN:VEVENT
-UID:saison-2025-pilze@calendarqueen.de
-DTSTART;VALUE=DATE:20251001
-DTEND;VALUE=DATE:20251005
-SUMMARY:🍄 Pilzhochsaison – Steinpilze & Co.
-DESCRIPTION:Oktober ist Pilzhochsaison. Steinpilze, Maronen, Pfifferlinge und Herbsttrompeten sind jetzt in den Wäldern zu finden – nach Regen besonders reichlich.
-CATEGORIES:Saisonkalender
-END:VEVENT
-BEGIN:VEVENT
-UID:saison-2025-quitten@calendarqueen.de
-DTSTART;VALUE=DATE:20251010
-DTEND;VALUE=DATE:20251014
-SUMMARY:🍋 Quitten-Saison
-DESCRIPTION:Quitten – das unterschätzte Herbstobst. Jetzt auf Wochenmärkten erhältlich. Ideal für Gelee, Chutney und Kompott.
-CATEGORIES:Saisonkalender
+UID:cq-saison-weintrauben-20260910@calendarqueen.de
+DTSTART;VALUE=DATE:20260910
+DTEND;VALUE=DATE:20261030
+SUMMARY:Weintrauben & Weinlese beginnt
+DESCRIPTION:Deutsche Weintrauben aus dem Supermarkt und erste Weinlesen in den Anbaugebieten (Rheinhessen\, Pfalz\, Mosel).\n\nERLEBNIS: Viele Weingüter bieten Mitlesen-Aktionen an.
+CATEGORIES:Saisonkalender,Obst,Weinlese
 END:VEVENT
 END:VCALENDAR
