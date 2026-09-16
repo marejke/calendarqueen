@@ -1,266 +1,184 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="Kuratierte Kalender-Feeds für Mondphasen, Berlin Events, Babyjahr und mehr. Direkt in Apple, Google oder Outlook."/>
-  <title>Calendar Queen – Feed your Calendar</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="css/style.css"/>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Calendar Queen — Feed your Calendar</title>
+<meta name="description" content="Calendar Queen: kuratierte, themenbezogene Kalender-Feeds zum Abonnieren – automatisch in Apple, Google oder Outlook Kalender.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400&family=Figtree:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
-<a href="#main" class="skip-link">Zum Inhalt springen</a>
-<header>
-  <nav class="nav" aria-label="Hauptnavigation">
-    <div class="nav-inner">
-      <a href="index.html" class="nav-logo" aria-label="Calendar Queen – Startseite">
-        <img src="assets/logo.png" alt="" aria-hidden="true" width="30" height="30"/>
-        <span class="nav-logo-text">calendar queen</span>
-      </a>
-      <div class="nav-links">
-        <a href="feeds.html">Feeds entdecken</a>
-        <a href="index.html#how">So funktionierts</a>
-        <a href="index.html#faq">FAQ</a>
-      </div>
-      <a href="feeds.html" class="nav-cta">Gratis starten</a>
-      <button class="nav-hamburger" id="hamburger" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mobile-menu">
-        <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
-      </button>
-    </div>
-  </nav>
-  <div class="mobile-menu" id="mobile-menu" role="navigation" aria-label="Mobile Navigation">
-    <a href="index.html">Startseite</a>
-    <a href="feeds.html">Feeds entdecken</a>
-    <a href="index.html#how">So funktionierts</a>
-    <a href="index.html#faq">FAQ</a>
-    <a href="feeds.html" class="nav-cta">Gratis starten</a>
+
+<header class="top">
+  <div class="wrap top-in">
+    <a class="brand" href="index.html"><img class="lockup" src="assets/logo.png" alt="Calendar Queen"></a>
+    <nav class="main">
+      <a href="feeds.html">Feeds entdecken</a>
+      <a href="#how">So funktioniert's</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <span class="headcta"><a class="btn btn-indigo" href="feeds.html">Gratis starten</a></span>
   </div>
 </header>
-<main id="main">
 
-  <section class="hero" aria-labelledby="hero-h1">
-    <div class="hero-inner">
-      <div>
-        <div class="hero-tag">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-          Jetzt: 40+ Feeds verfügbar
-        </div>
-        <h1 class="hero-h1" id="hero-h1">Dein Kalender.<br><em>Endlich lebendig.</em></h1>
-        <p class="hero-sub">Abonniere kuratierte Feeds für deine Interessen – Mondphasen, Berlin Events, Babyjahr und mehr. Direkt in Apple, Google oder Outlook.</p>
-        <div class="hero-actions">
-          <a href="feeds.html" class="btn-salmon">Feeds entdecken</a>
-          <a href="#how" class="btn-outline">So funktionierts</a>
-        </div>
-        <div class="compat" aria-label="Kompatibel mit">
-          <span class="compat-tag">Apple Calendar</span>
-          <span class="compat-tag">Google Calendar</span>
-          <span class="compat-tag">Outlook</span>
-        </div>
-      </div>
-
-      <div class="cal-wrap" aria-hidden="true" role="presentation">
-        <div class="cal-header">
-          <span class="cal-month" id="cal-month-label">Juli 2026</span>
-          <div class="cal-nav-btns">
-            <button class="cal-nav-btn" id="cal-prev" tabindex="-1" aria-hidden="true">‹</button>
-            <button class="cal-nav-btn" id="cal-next" tabindex="-1" aria-hidden="true">›</button>
-          </div>
-        </div>
-        <div class="cal-weekdays" aria-hidden="true">
-          <div class="cal-weekday">Mo</div><div class="cal-weekday">Di</div>
-          <div class="cal-weekday">Mi</div><div class="cal-weekday">Do</div>
-          <div class="cal-weekday">Fr</div><div class="cal-weekday">Sa</div>
-          <div class="cal-weekday">So</div>
-        </div>
-        <div class="cal-days" id="cal-days" aria-hidden="true"></div>
-        <div class="cal-chips" id="cal-chips" aria-hidden="true"></div>
-      </div>
-    </div>
-  </section>
-
-  <div class="stats-strip" role="region" aria-label="Zahlen">
-    <div class="stat"><div class="stat-num">500M+</div><div class="stat-label">Menschen öffnen täglich einen Kalender</div></div>
-    <div class="stat"><div class="stat-num">40+</div><div class="stat-label">kuratierte Feeds verfügbar</div></div>
-    <div class="stat"><div class="stat-num">3</div><div class="stat-label">Klicks bis der Feed im Kalender ist</div></div>
-    <div class="stat"><div class="stat-num">0</div><div class="stat-label">neue Apps nötig</div></div>
-  </div>
-
-  <hr class="divider"/>
-
-  <section class="section" id="how" aria-labelledby="how-h" style="background:var(--taupe-pale)">
-    <div class="container">
-      <p class="eyebrow">So funktionierts</p>
-      <h2 class="section-h" id="how-h">In drei Schritten zum lebendigen Kalender</h2>
-      <p class="section-sub">Kein neues Konto, keine neue App – dein Kalender bleibt, was er ist. Du gibst ihm nur mehr Inhalt.</p>
-      <div class="steps fade-in" role="list">
-        <div class="step" role="listitem"><span class="step-n" aria-hidden="true">01</span><h3>Feed aussuchen</h3><p>Stöbere durch unsere Sammlung kuratierter Feeds. Von Mondphasen über Berlin Events bis zum Babyjahr – such dir aus, was zu dir passt.</p></div>
-        <div class="step" role="listitem"><span class="step-n" aria-hidden="true">02</span><h3>Kalender wählen</h3><p>Apple, Google oder Outlook – wähle deinen Kalender. Wir zeigen dir, wie du den Feed in einer Minute hinzufügst.</p></div>
-        <div class="step" role="listitem"><span class="step-n" aria-hidden="true">03</span><h3>Fertig &amp; automatisch</h3><p>Der Feed aktualisiert sich von selbst. Neue Termine landen direkt in deinem Kalender – ohne Nachrichten, ohne Push, ohne Arbeit.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <hr class="divider"/>
-
-  <section class="section" aria-labelledby="feeds-h">
-    <div class="container">
-      <p class="eyebrow">Beliebt</p>
-      <h2 class="section-h" id="feeds-h">Unsere Top-Feeds</h2>
-      <p class="section-sub">Alle Feeds sind kostenlos – direkt in deine Kalender-App.</p>
-      <div class="feed-grid fade-in">
-
-        <article class="feed-card" aria-label="Feed: Erstes Babyjahr">
-          <div class="feed-head">
-            <div class="feed-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
-            <div><div class="feed-title">Erstes Babyjahr</div><span class="badge-free">Kostenlos</span></div>
-          </div>
-          <p class="feed-desc">Wachstumsschübe &amp; Meilensteine automatisch zum Geburtsdatum – nie wieder von Schlafregression überrascht werden.</p>
-          <div class="feed-foot">
-            <button class="sub-btn" data-subscribe="babyjahr" data-title="Erstes Babyjahr" aria-label="Babyjahr-Feed abonnieren"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>Abonnieren</button>
-            <a href="feed-babyjahr.html" style="font-size:12px;color:var(--black-soft)">Details →</a>
-          </div>
-        </article>
-
-        <article class="feed-card" aria-label="Feed: Mondphasen 2026">
-          <div class="feed-head">
-            <div class="feed-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></div>
-            <div><div class="feed-title">Mondphasen 2026</div><span class="badge-free">Kostenlos</span></div>
-          </div>
-          <p class="feed-desc">Vollmond, Neumond &amp; alle Phasen – kuratiert mit Ritual-Impulsen für jeden Mondwechsel.</p>
-          <div class="feed-foot">
-            <button class="sub-btn" data-subscribe="mondphasen" data-title="Mondphasen 2026" aria-label="Mondphasen-Feed abonnieren"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>Abonnieren</button>
-          </div>
-        </article>
-
-        <article class="feed-card" aria-label="Feed: Berlin Events">
-          <div class="feed-head">
-            <div class="feed-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
-            <div><div class="feed-title">Berlin Events &amp; Flohmärkte</div><span class="badge-free">Kostenlos</span></div>
-          </div>
-          <p class="feed-desc">Mauerpark, Boxhagener, RAW-Gelände – alle Berliner Flohmärkte und kuratierte Events. Aktuell Juli–Sep 2026.</p>
-          <div class="feed-foot">
-            <button class="sub-btn" data-subscribe="berlin-events" data-title="Berlin Events & Flohmärkte" aria-label="Berlin-Events-Feed abonnieren"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>Abonnieren</button>
-          </div>
-        </article>
-
-      </div>
-      <div class="text-center mt-32">
-        <a href="feeds.html" style="font-size:15px;font-weight:500;color:var(--salmon);border-bottom:1.5px solid var(--salmon);padding-bottom:2px">Alle 40+ Feeds ansehen →</a>
-      </div>
-    </div>
-  </section>
-
-  <hr class="divider"/>
-
-  <!-- USE CASE — Variant C: Lachs-Pale panel -->
-  <div class="split" aria-label="Anwendungsbeispiel Babyjahr">
-    <div class="split-text">
-      <p class="eyebrow">Use Case</p>
-      <h2 class="section-h">&ldquo;Ich dachte, etwas stimmt nicht.&rdquo;</h2>
-      <p style="font-size:15px;color:var(--black-soft);line-height:1.75;margin-top:14px">
-        Lenas Baby ist drei Wochen alt und schreit in Phasen viel. Nachts sucht sie auf dem Handy nach &bdquo;Baby weint Wachstumsschub&ldquo;.
-      </p>
-      <p style="font-size:15px;color:var(--black-soft);line-height:1.75;margin-top:10px">
-        Mit dem <strong>Babyjahr-Feed</strong> taucht der nächste Entwicklungssprung vorab im Kalender auf. Als das Baby unruhiger wird, öffnet Lena den Kalender: <em>&bdquo;Das ist der Schub. Alles gut.&ldquo;</em>
-      </p>
-      <a href="feed-babyjahr.html" class="btn-salmon mt-24" style="width:fit-content">Feed ansehen</a>
-    </div>
-    <div class="split-cal">
-      <p class="cal-preview-lbl">Dein Kalender – Juli 2026</p>
-      <div class="cal-entry"><div class="cal-dot" style="background:var(--salmon)"></div><div><p class="cal-et">Wachstumsschub – Woche 12</p><p class="cal-es">20 Jul · Babyjahr-Feed</p></div></div>
-      <div class="cal-entry"><div class="cal-dot" style="background:var(--taupe)"></div><div><p class="cal-et">Perseiden – Meteorschauer</p><p class="cal-es">11 Aug · Astronomie-Feed</p></div></div>
-      <div class="cal-entry"><div class="cal-dot" style="background:var(--taupe)"></div><div><p class="cal-et">Brombeeren – Erntezeit beginnt</p><p class="cal-es">1 Aug · Kräuter Berlin</p></div></div>
-      <div class="cal-entry"><div class="cal-dot" style="background:var(--salmon)"></div><div><p class="cal-et">Vollmond – Störmond</p><p class="cal-es">9 Aug · Mondphasen</p></div></div>
-    </div>
-  </div>
-
-  <hr class="divider"/>
-
-  <section class="section" aria-labelledby="testi-h" style="background:var(--taupe-pale)">
-    <div class="container">
-      <p class="eyebrow">Was andere sagen</p>
-      <h2 class="section-h" id="testi-h">Menschen, die ihren Kalender jetzt lieben</h2>
-      <div class="testi-grid fade-in">
-        <div class="testi"><p class="testi-q">&bdquo;Endlich weiß ich vorher, wann der nächste Schub kommt. Das hat uns so viel Stress erspart – wir waren vorbereitet.&ldquo;</p><p class="testi-author">Lena M.</p><p class="testi-role">Mutter, Berlin · Babyjahr-Feed</p></div>
-        <div class="testi"><p class="testi-q">&bdquo;Der Saisonkalender hat mein Einkaufen komplett verändert. Ich esse jetzt automatisch saisonal, weil ich immer weiß, was reif ist.&ldquo;</p><p class="testi-author">Sara K.</p><p class="testi-role">Food-Bloggerin, Hamburg</p></div>
-        <div class="testi"><p class="testi-q">&bdquo;Ich habe den Berlin Events Feed meiner Mama eingerichtet. Sie entdeckt jetzt wieder Flohmärkte – ohne Social Media.&ldquo;</p><p class="testi-author">Jonas P.</p><p class="testi-role">Designer, Berlin</p></div>
-      </div>
-    </div>
-  </section>
-
-  <hr class="divider"/>
-
-  <section class="section" id="faq" aria-labelledby="faq-h" style="background:var(--taupe-light)">
-    <div style="max-width:680px;margin:0 auto">
-      <p class="eyebrow text-center">FAQ</p>
-      <h2 class="section-h text-center" id="faq-h">Häufige Fragen</h2>
-      <div style="margin-top:36px">
-        <div class="faq-item"><button class="faq-q" aria-expanded="false" aria-controls="faq1" id="faq1-btn">Was genau ist ein Kalender-Feed?<span class="faq-icon" aria-hidden="true">+</span></button><div class="faq-a" id="faq1" role="region" aria-labelledby="faq1-btn">Ein Kalender-Feed (iCalendar / .ics) ist ein Abonnement für Termine. Einmal hinzugefügt, aktualisiert er sich automatisch – wie ein Podcast-Abo, nur für Termine.</div></div>
-        <div class="faq-item"><button class="faq-q" aria-expanded="false" aria-controls="faq2" id="faq2-btn">Funktioniert das mit meinem Kalender?<span class="faq-icon" aria-hidden="true">+</span></button><div class="faq-a" id="faq2" role="region" aria-labelledby="faq2-btn">Ja! Unsere Feeds sind kompatibel mit Apple Calendar (iPhone, iPad, Mac), Google Calendar (Android, Web) und Outlook (Windows, Mac, Web).</div></div>
-        <div class="faq-item"><button class="faq-q" aria-expanded="false" aria-controls="faq3" id="faq3-btn">Muss ich eine neue App installieren?<span class="faq-icon" aria-hidden="true">+</span></button><div class="faq-a" id="faq3" role="region" aria-labelledby="faq3-btn">Nein – das ist der Kern von Calendar Queen. Du behältst deinen gewohnten Kalender. Wir liefern nur den Inhalt.</div></div>
-        <div class="faq-item"><button class="faq-q" aria-expanded="false" aria-controls="faq4" id="faq4-btn">Was kostet Calendar Queen?<span class="faq-icon" aria-hidden="true">+</span></button><div class="faq-a" id="faq4" role="region" aria-labelledby="faq4-btn">Alle Feeds sind derzeit kostenlos. Zukünftig gibt es ein Freemium-Modell – Basis-Feeds bleiben gratis, personalisierte Premium-Feeds werden kostenpflichtig.</div></div>
-        <div class="faq-item"><button class="faq-q" aria-expanded="false" aria-controls="faq5" id="faq5-btn">Aktualisieren sich Feeds automatisch?<span class="faq-icon" aria-hidden="true">+</span></button><div class="faq-a" id="faq5" role="region" aria-labelledby="faq5-btn">Ja. Einmal abonniert, synchronisiert sich der Feed im Hintergrund. Neue Termine erscheinen automatisch – ohne dass du etwas tun musst.</div></div>
-        <div class="faq-item"><button class="faq-q" aria-expanded="false" aria-controls="faq6" id="faq6-btn">Welche Daten werden gespeichert?<span class="faq-icon" aria-hidden="true">+</span></button><div class="faq-a" id="faq6" role="region" aria-labelledby="faq6-btn">Wir erheben keine Gesundheitsdaten. Kostenlose Feeds erfordern keine Registrierung. Details in unserer <a href="datenschutz.html">Datenschutzerklärung</a>.</div></div>
-      </div>
-    </div>
-  </section>
-
-  <div class="cta-banner" aria-labelledby="cta-h">
-    <div class="cta-banner-inner">
-      <div><h2 class="cta-h" id="cta-h">Dein Kalender wartet.</h2><p class="cta-sub">Wähle einen kostenlosen Feed – in einer Minute in deinem Kalender.</p></div>
-      <a href="feeds.html" class="btn-white">Feeds entdecken</a>
-    </div>
-  </div>
-
-</main>
-<footer class="footer" aria-label="Seitenfuß">
-  <div class="footer-inner">
+<!-- HERO -->
+<section class="home-hero">
+  <div class="wrap grid2">
     <div>
-      <div class="footer-logo">
-        <img src="assets/logo.png" alt="" aria-hidden="true" width="26" height="26"/>
-        <span class="footer-logo-text">calendar queen</span>
+      <span class="eyebrow">Feed your Calendar</span>
+      <h1>Abonnier Kalender, die <em>zu dir passen</em>.</h1>
+      <p class="lede">Von Mondphasen über Berliner Flohmärkte bis Steuerfristen — jeder Feed landet <b>automatisch in deinem eigenen Kalender</b>. Kein Copy-Paste, keine extra App.</p>
+      <div class="cta-row">
+        <a class="btn btn-coral" href="feeds.html">Feeds entdecken →</a>
+        <a class="btn btn-ghost" href="#how">So funktioniert's</a>
       </div>
-      <p class="footer-tagline">Feed your Calendar.<br>Kuratierte Kalender-Feeds für ein lebendigeres Leben.</p>
+      <div class="trust">
+        <span><b>Kostenlos</b> abonnieren</span>
+        <span>Apple · Google · Outlook</span>
+        <span><b>Werbefrei</b></span>
+      </div>
     </div>
-    <div class="footer-col">
-      <h4>Feeds</h4>
-      <a href="feeds.html">Alle Feeds</a>
-      <a href="feeds.html">Familie &amp; Gesundheit</a>
-      <a href="feeds.html">Berlin</a>
-      <a href="feeds.html">Astronomie</a>
-    </div>
-    <div class="footer-col">
-      <h4>Infos</h4>
-      <a href="index.html#how">So funktionierts</a>
-      <a href="index.html#faq">FAQ</a>
-      <a href="mailto:hallo@calendarqueen.de">Kontakt</a>
-    </div>
-    <div class="footer-col">
-      <h4>Rechtliches</h4>
-      <a href="impressum.html">Impressum</a>
-      <a href="datenschutz.html">Datenschutz</a>
-      <a href="nutzungsbedingungen.html">Nutzungsbedingungen</a>
+    <div class="hero-visual">
+      <span class="float">Auto-Update ✓</span>
+      <div class="mini-cal">
+        <div class="mc-head"><b>September 2026</b><span>Deine Feeds</span></div>
+        <div class="ev"><span class="swatch" style="background:var(--coral)"></span><div><small>Mondphasen</small><p>Vollmond · 21:14</p></div></div>
+        <div class="ev"><span class="swatch" style="background:var(--celeste)"></span><div><small>Berlin Events</small><p>Flohmarkt Mauerpark</p></div></div>
+        <div class="ev"><span class="swatch" style="background:var(--indigo)"></span><div><small>Saisonkalender</small><p>Jetzt: Kürbis &amp; Birne</p></div></div>
+      </div>
     </div>
   </div>
-  <div class="footer-bottom">
-    <p>© 2025 Calendar Queen. Alle Rechte vorbehalten.</p>
-    <div class="footer-legal">
-      <a href="impressum.html">Impressum</a>
-      <a href="datenschutz.html">Datenschutz</a>
-      <a href="nutzungsbedingungen.html">AGB</a>
+</section>
+
+<!-- HOW -->
+<section class="sec" id="how" style="padding-top:16px;">
+  <div class="wrap">
+    <div class="how">
+      <div class="lead">
+        <span class="kick">So einfach geht's</span>
+        <h2 class="serif">In drei Schritten für immer im Kalender.</h2>
+      </div>
+      <div class="steps">
+        <div class="step"><div class="num">1</div><h4>Feed aussuchen</h4><p>Stöber durch die Themen und wähl den Kalender, der dich neugierig macht.</p></div>
+        <div class="step"><div class="num">2</div><h4>Ein Tipp, abonniert</h4><p>Öffnet sich direkt in Apple, Google oder Outlook Kalender — ohne Konto, ohne App.</p></div>
+        <div class="step"><div class="num">3</div><h4>Läuft von allein</h4><p>Neue Termine erscheinen automatisch. Einmal abonniert, immer aktuell.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEED PREVIEW -->
+<section class="sec" style="padding-top:8px;">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 class="serif">Beliebte <em>Feeds</em></h2>
+      <a class="count" href="feeds.html"><b>Alle 20 Feeds ansehen →</b></a>
+    </div>
+    <div class="grid">
+      <a class="fc" href="feed-detail.html">
+        <div class="fc-top"><div class="fc-ico"><svg viewBox="0 0 24 24"><path d="M12 20s-6-3.8-8.5-7.5C1.8 9.7 3.3 6.5 6.4 6.5c1.8 0 3 1.2 5.6 3.6 2.6-2.4 3.8-3.6 5.6-3.6 3.1 0 4.6 3.2 2.9 6C18 16.2 12 20 12 20z"/></svg></div><span class="badge">Kostenlos</span></div>
+        <span class="fc-cat">Familie &amp; Gesundheit</span><h3 class="serif">Erstes Babyjahr</h3>
+        <p>Wachstumsschübe &amp; Meilensteine automatisch zum Geburtsdatum.</p>
+        <div class="fc-actions"><span class="btn-sub">Abonnieren</span><span class="details">Details →</span></div>
+      </a>
+      <a class="fc" href="feeds.html">
+        <div class="fc-top"><div class="fc-ico"><svg viewBox="0 0 24 24"><path d="M20 15a7 7 0 1 1-8-10 6 6 0 0 0 8 10z"/><path d="M18 5l.6 1.4L20 7l-1.4.6L18 9l-.6-1.4L16 7l1.4-.6z"/></svg></div><span class="badge">Kostenlos</span></div>
+        <span class="fc-cat">Astronomie &amp; Himmel</span><h3 class="serif">Mondphasen 2026</h3>
+        <p>Neumond, Vollmond &amp; Co. – der Mondrhythmus des ganzen Jahres.</p>
+        <div class="fc-actions"><span class="btn-sub">Abonnieren</span><span class="details">Details →</span></div>
+      </a>
+      <a class="fc" href="feeds.html">
+        <div class="fc-top"><div class="fc-ico"><svg viewBox="0 0 24 24"><path d="M4 21V9l5-3v3l5-3v15"/><path d="M14 21V6l6 4v11"/><path d="M3 21h18"/></svg></div><span class="badge">Kostenlos</span></div>
+        <span class="fc-cat">Berlin Lokal</span><h3 class="serif">Berlin Events &amp; Flohmärkte</h3>
+        <p>Konzerte, Trödel und Openings – dein Wochenende in der Stadt.</p>
+        <div class="fc-actions"><span class="btn-sub">Abonnieren</span><span class="details">Details →</span></div>
+      </a>
+      <a class="fc" href="feeds.html">
+        <div class="fc-top"><div class="fc-ico"><svg viewBox="0 0 24 24"><path d="M12 21c0-6 0-10 7-13-1 8-4 10-7 10z"/><path d="M12 21c0-4-2-6-5-7"/></svg></div><span class="badge">Kostenlos</span></div>
+        <span class="fc-cat">Natur &amp; Garten</span><h3 class="serif">Saisonkalender</h3>
+        <p>Obst &amp; Gemüse, wenn es am besten schmeckt – regional gedacht.</p>
+        <div class="fc-actions"><span class="btn-sub">Abonnieren</span><span class="details">Details →</span></div>
+      </a>
+      <a class="fc" href="feeds.html">
+        <div class="fc-top"><div class="fc-ico"><svg viewBox="0 0 24 24"><path d="M4 4h6l9 9-6 6-9-9z"/><circle cx="8.5" cy="8.5" r="1.4"/></svg></div><span class="badge">Kostenlos</span></div>
+        <span class="fc-cat">Shopping &amp; Fristen</span><h3 class="serif">Sale-Kalender 2026</h3>
+        <p>Black Friday, Schlussverkauf &amp; Aktionstage – nie wieder zu spät.</p>
+        <div class="fc-actions"><span class="btn-sub">Abonnieren</span><span class="details">Details →</span></div>
+      </a>
+      <a class="fc" href="feeds.html">
+        <div class="fc-top"><div class="fc-ico"><svg viewBox="0 0 24 24"><circle cx="15" cy="5" r="2"/><path d="M5 20l3-4 3 2 1-4 3 3 3-1"/><path d="M8 16l1-5 4-1 2 3"/></svg></div><span class="badge">Kostenlos</span></div>
+        <span class="fc-cat">Sport</span><h3 class="serif">Marathon &amp; Lauf-Anmeldungen</h3>
+        <p>Anmeldestarts und Renntermine der großen Läufe – Startplatz sichern.</p>
+        <div class="fc-actions"><span class="btn-sub">Abonnieren</span><span class="details">Details →</span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CATEGORIES -->
+<section class="sec" style="padding-top:8px;">
+  <div class="wrap">
+    <div class="sec-head"><h2 class="serif">Nach <em>Vibe</em> stöbern</h2><span class="count">10 Kategorien</span></div>
+    <div class="catrow">
+      <a class="cat" href="feeds.html"><span class="dot"></span><span>Familie &amp; Gesundheit</span></a>
+      <a class="cat" href="feeds.html"><span class="dot"></span><span>Berlin Lokal</span></a>
+      <a class="cat" href="feeds.html"><span class="dot"></span><span>Natur &amp; Garten</span></a>
+      <a class="cat" href="feeds.html"><span class="dot"></span><span>Astronomie &amp; Himmel</span></a>
+      <a class="cat" href="feeds.html"><span class="dot"></span><span>Kultur &amp; Freizeit</span></a>
+      <a class="cat" href="feeds.html"><span class="dot"></span><span>Musik &amp; Festivals</span></a>
+      <a class="cat" href="feeds.html"><span class="dot"></span><span>Sport</span></a>
+      <a class="cat" href="feeds.html"><span class="dot"></span><span>Shopping &amp; Fristen</span></a>
+      <a class="cat" href="feeds.html"><span class="dot"></span><span>Spiritualität</span></a>
+      <a class="cat" href="feeds.html"><span class="dot"></span><span>Entwicklung &amp; Community</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="sec" id="faq" style="padding-top:8px;">
+  <div class="wrap">
+    <div class="sec-head"><h2 class="serif">Häufige <em>Fragen</em></h2></div>
+    <div class="faq">
+      <details open><summary>Wie abonniere ich einen Feed?</summary><p>Du wählst einen Feed und tippst auf „Abonnieren". Der Kalender öffnet sich direkt in Apple, Google oder Outlook und fügt den Feed hinzu – ganz ohne Konto oder App.</p></details>
+      <details><summary>Kostet das etwas?</summary><p>Nein. Alle Feeds von Calendar Queen sind kostenlos abonnierbar und werbefrei.</p></details>
+      <details><summary>Werden die Termine automatisch aktualisiert?</summary><p>Ja. Sobald du einen Feed abonniert hast, erscheinen neue und aktualisierte Termine automatisch in deinem Kalender – du musst nichts weiter tun.</p></details>
+      <details><summary>Auf welchen Geräten funktioniert das?</summary><p>Überall, wo dein Kalender läuft: iPhone, iPad, Mac, Android, Windows und im Web. Ein einmal abonnierter Feed synchronisiert sich über all deine Geräte.</p></details>
+      <details><summary>Wie kündige ich einen Feed?</summary><p>Du entfernst den abonnierten Kalender einfach in den Einstellungen deiner Kalender-App. Es entstehen keine Kosten und keine Kündigungsfristen.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="sec" style="padding-block:8px 44px;">
+  <div class="wrap">
+    <div class="cta">
+      <h2 class="serif">Dein Kalender wartet.</h2>
+      <p>Kein Account. Keine App. Einfach abonnieren.</p>
+      <a class="btn btn-coral" href="feeds.html">Feeds entdecken</a>
+    </div>
+  </div>
+</section>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="fgrid">
+      <div>
+        <div class="brand"><img class="lockup" src="assets/logo.png" alt="Calendar Queen"></div>
+        <p class="tag">Feed your Calendar. Kuratierte Kalender-Feeds für ein lebendigeres Leben.</p>
+      </div>
+      <div><h4>Feeds</h4><ul><li><a href="feeds.html">Alle Feeds</a></li><li><a href="feeds.html">Familie &amp; Gesundheit</a></li><li><a href="feeds.html">Berlin</a></li><li><a href="feeds.html">Astronomie</a></li></ul></div>
+      <div><h4>Infos</h4><ul><li><a href="#how">So funktioniert's</a></li><li><a href="#faq">FAQ</a></li><li><a href="mailto:hallo@calendarqueen.de">Kontakt</a></li></ul></div>
+      <div><h4>Rechtliches</h4><ul><li><a href="impressum.html">Impressum</a></li><li><a href="datenschutz.html">Datenschutz</a></li><li><a href="nutzungsbedingungen.html">Nutzungsbedingungen</a></li></ul></div>
+    </div>
+    <div class="fbottom">
+      <span>© 2026 Calendar Queen · calendarqueen.de</span>
+      <nav><a href="impressum.html">Impressum</a><a href="datenschutz.html">Datenschutz</a><a href="nutzungsbedingungen.html">AGB</a></nav>
     </div>
   </div>
 </footer>
 
-<div id="cookie-banner" class="cookie-banner" role="dialog" aria-live="polite" aria-label="Cookie-Hinweis">
-  <p>Wir verwenden nur technisch notwendige Cookies. Mehr in unserer <a href="datenschutz.html">Datenschutzerklärung</a>.</p>
-  <div class="cookie-actions">
-    <button class="cookie-decline" id="cookie-decline">Nur notwendige</button>
-    <button class="cookie-accept" id="cookie-accept">Akzeptieren</button>
-  </div>
-</div>
-<script src="js/main.js"></script>
 </body>
 </html>

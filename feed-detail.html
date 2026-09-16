@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Erstes Babyjahr — Calendar Queen</title>
+<meta name="description" content="Feed „Erstes Babyjahr": Wachstumsschübe und Meilensteine automatisch zum Geburtsdatum – kostenlos abonnieren.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400&family=Figtree:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap top-in">
+    <a class="brand" href="index.html"><img class="lockup" src="assets/logo.png" alt="Calendar Queen"></a>
+    <nav class="main">
+      <a href="feeds.html" class="active">Feeds entdecken</a>
+      <a href="index.html#how">So funktioniert's</a>
+      <a href="index.html#faq">FAQ</a>
+    </nav>
+    <span class="headcta"><a class="btn btn-indigo" href="feeds.html">Gratis starten</a></span>
+  </div>
+</header>
+
+<div class="wrap crumbs">
+  <a href="feeds.html">Feeds</a> / <a href="feeds.html">Familie &amp; Gesundheit</a> / <span>Erstes Babyjahr</span>
+</div>
+
+<section class="wrap detail-hero">
+  <div>
+    <div class="dh-ico"><svg viewBox="0 0 24 24"><path d="M12 20s-6-3.8-8.5-7.5C1.8 9.7 3.3 6.5 6.4 6.5c1.8 0 3 1.2 5.6 3.6 2.6-2.4 3.8-3.6 5.6-3.6 3.1 0 4.6 3.2 2.9 6C18 16.2 12 20 12 20z"/></svg></div>
+    <span class="eyebrow">Familie &amp; Gesundheit</span>
+    <h1 class="serif">Erstes Babyjahr</h1>
+    <div class="tagline-row"><span class="badge">Kostenlos</span><span style="font-size:13.5px;color:var(--muted);">52 Wochen · geführt · Auto-Update</span></div>
+    <p class="lede">Wachstumsschübe, Meilensteine und U-Untersuchungen – automatisch berechnet zum Geburtsdatum deines Kindes. So weißt du immer, was gerade dran ist, und wirst nie wieder überrascht.</p>
+    <p style="font-size:14.5px;color:var(--muted);max-width:48ch;">Der Feed passt sich an das von dir gewählte Geburtsdatum an und legt alle Termine des ersten Jahres in deinen Kalender – von den Wonder-Weeks-Schüben bis zu den Vorsorgeterminen.</p>
+  </div>
+
+  <aside class="subscribe-card">
+    <h3 class="serif">Jetzt abonnieren</h3>
+    <p class="sub-note">Ein Klick – der Feed landet direkt in deinem Kalender.</p>
+    <div class="sub-btns">
+      <a href="#"><span class="k"></span>Apple Kalender</a>
+      <a href="#"><span class="k">G</span>Google Kalender</a>
+      <a href="#"><span class="k">O</span>Outlook</a>
+    </div>
+    <div class="webcal">
+      <label for="url">Oder per webcal-Link</label>
+      <div class="row">
+        <input id="url" type="text" value="webcal://calendarqueen.de/feeds/babyjahr.ics" readonly>
+        <button class="btn btn-coral" style="padding:9px 15px;" onclick="var i=document.getElementById('url');i.select();try{document.execCommand('copy');this.textContent='Kopiert';}catch(e){}">Kopieren</button>
+      </div>
+    </div>
+  </aside>
+</section>
+
+<section class="wrap detail-body">
+  <div class="sec-head" style="margin-bottom:18px;"><h2 class="serif">Was <em>drin</em> ist</h2><span class="count">Beispiel-Termine</span></div>
+  <div class="entries">
+    <div class="entry"><div class="date"><b>20</b><small>Sep</small></div><div class="etext"><h4>Wachstumsschub #1 · Woche 5</h4><p>Wonder Week – mehr Nähe, unruhiger Schlaf, neue Wahrnehmungen.</p></div></div>
+    <div class="entry"><div class="date"><b>04</b><small>Okt</small></div><div class="etext"><h4>U3-Untersuchung fällig</h4><p>Vorsorgetermin in Woche 4–5 – Erinnerung rechtzeitig vorab.</p></div></div>
+    <div class="entry"><div class="date"><b>18</b><small>Okt</small></div><div class="etext"><h4>Erstes soziales Lächeln · Woche 6</h4><p>Typischer Meilenstein rund um die 6. Lebenswoche.</p></div></div>
+    <div class="entry"><div class="date"><b>29</b><small>Nov</small></div><div class="etext"><h4>Wachstumsschub #4 · Woche 12</h4><p>Größerer Entwicklungssprung – Greifen und Brabbeln beginnen.</p></div></div>
+  </div>
+  <p style="font-size:12.5px;color:var(--muted);margin-top:14px;">Beispielhafte Darstellung. Die tatsächlichen Termine berechnen sich aus dem Geburtsdatum.</p>
+</section>
+
+<section class="sec" style="padding-top:20px;">
+  <div class="wrap">
+    <div class="how">
+      <div class="lead"><span class="kick">So abonnierst du</span><h2 class="serif">In drei Schritten im Kalender.</h2></div>
+      <div class="steps">
+        <div class="step"><div class="num">1</div><h4>Geburtsdatum wählen</h4><p>Gib das Geburtsdatum ein – der Feed berechnet daraus alle Termine des ersten Jahres.</p></div>
+        <div class="step"><div class="num">2</div><h4>Ein Tipp, abonniert</h4><p>Öffnet sich direkt in Apple, Google oder Outlook Kalender – ohne Konto, ohne App.</p></div>
+        <div class="step"><div class="num">3</div><h4>Läuft von allein</h4><p>Alle Meilensteine erscheinen automatisch – rechtzeitig, für das ganze erste Jahr.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" style="padding-top:8px;">
+  <div class="wrap">
+    <div class="sec-head"><h2 class="serif">Ähnliche <em>Feeds</em></h2><a class="count" href="feeds.html"><b>Alle Feeds →</b></a></div>
+    <div class="grid">
+      <a class="fc" href="feeds.html">
+        <div class="fc-top"><div class="fc-ico"><svg viewBox="0 0 24 24"><path d="M12 20s-6-3.8-8.5-7.5C1.8 9.7 3.3 6.5 6.4 6.5c1.8 0 3 1.2 5.6 3.6 2.6-2.4 3.8-3.6 5.6-3.6 3.1 0 4.6 3.2 2.9 6C18 16.2 12 20 12 20z"/></svg></div><span class="badge">Kostenlos</span></div>
+        <span class="fc-cat">Familie &amp; Gesundheit</span><h3 class="serif">40 Schwangerschaftswochen</h3>
+        <p>Woche für Woche durch die Schwangerschaft – Entwicklung, Termine, Checklisten.</p>
+        <div class="fc-actions"><span class="btn-sub">Abonnieren</span><span class="details">Details →</span></div>
+      </a>
+      <a class="fc" href="feeds.html">
+        <div class="fc-top"><div class="fc-ico"><svg viewBox="0 0 24 24"><path d="M12 20s-6-3.8-8.5-7.5C1.8 9.7 3.3 6.5 6.4 6.5c1.8 0 3 1.2 5.6 3.6 2.6-2.4 3.8-3.6 5.6-3.6 3.1 0 4.6 3.2 2.9 6C18 16.2 12 20 12 20z"/></svg></div><span class="badge">Kostenlos</span></div>
+        <span class="fc-cat">Familie &amp; Gesundheit</span><h3 class="serif">Pollenflug-Kalender</h3>
+        <p>Wann welche Pollen fliegen – rechtzeitig vorbereitet durch die Saison.</p>
+        <div class="fc-actions"><span class="btn-sub">Abonnieren</span><span class="details">Details →</span></div>
+      </a>
+      <a class="fc" href="feeds.html">
+        <div class="fc-top"><div class="fc-ico"><svg viewBox="0 0 24 24"><path d="M12 21c0-6 0-10 7-13-1 8-4 10-7 10z"/><path d="M12 21c0-4-2-6-5-7"/></svg></div><span class="badge">Kostenlos</span></div>
+        <span class="fc-cat">Natur &amp; Garten</span><h3 class="serif">Saisonkalender</h3>
+        <p>Obst &amp; Gemüse, wenn es am besten schmeckt – regional gedacht.</p>
+        <div class="fc-actions"><span class="btn-sub">Abonnieren</span><span class="details">Details →</span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="fgrid">
+      <div>
+        <div class="brand"><img class="lockup" src="assets/logo.png" alt="Calendar Queen"></div>
+        <p class="tag">Feed your Calendar. Kuratierte Kalender-Feeds für ein lebendigeres Leben.</p>
+      </div>
+      <div><h4>Feeds</h4><ul><li><a href="feeds.html">Alle Feeds</a></li><li><a href="feeds.html">Familie &amp; Gesundheit</a></li><li><a href="feeds.html">Berlin</a></li><li><a href="feeds.html">Astronomie</a></li></ul></div>
+      <div><h4>Infos</h4><ul><li><a href="index.html#how">So funktioniert's</a></li><li><a href="index.html#faq">FAQ</a></li><li><a href="mailto:hallo@calendarqueen.de">Kontakt</a></li></ul></div>
+      <div><h4>Rechtliches</h4><ul><li><a href="impressum.html">Impressum</a></li><li><a href="datenschutz.html">Datenschutz</a></li><li><a href="nutzungsbedingungen.html">Nutzungsbedingungen</a></li></ul></div>
+    </div>
+    <div class="fbottom">
+      <span>© 2026 Calendar Queen · calendarqueen.de</span>
+      <nav><a href="impressum.html">Impressum</a><a href="datenschutz.html">Datenschutz</a><a href="nutzungsbedingungen.html">AGB</a></nav>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
