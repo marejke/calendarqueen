@@ -10,11 +10,11 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400&family=Figtree:wght@400;500;600;700&display=swap">
 <link rel="stylesheet" href="assets/style.css">
 </head>
-<body>
+<body class="home-page">
 
 <header class="top">
   <div class="wrap top-in">
-    <a class="brand" href="index.html"><img class="lockup" src="assets/logo.png" alt="Calendar Queen"></a>
+    <a class="brand" href="index.html"><img class="lockup" src="assets/logo-header.png" alt="Calendar Queen"></a>
     <nav class="main">
       <a href="feeds.html">Feeds entdecken</a>
       <a href="#how">So funktioniert's</a>
@@ -26,11 +26,11 @@
 
 <!-- HERO -->
 <section class="home-hero">
-  <div class="wrap grid2">
-    <div>
+  <div class="wrap home-hero-grid">
+    <div class="home-hero-copy">
       <span class="eyebrow">Feed your Calendar</span>
-      <h1>Abonnier Kalender, die <em>zu dir passen</em>.</h1>
-      <p class="lede">Von Mondphasen über Berliner Flohmärkte bis Steuerfristen — jeder Feed landet <b>automatisch in deinem eigenen Kalender</b>. Kein Copy-Paste, keine extra App.</p>
+      <h1>Dein Kalender<br>kann <em>mehr.</em></h1>
+      <p class="lede">Entdecke kuratierte Kalender-Feeds für die Dinge, die dich interessieren – und lass sie automatisch in deinem Kalender erscheinen.</p>
       <div class="cta-row">
         <a class="btn btn-coral" href="feeds.html">Feeds entdecken →</a>
         <a class="btn btn-ghost" href="#how">So funktioniert's</a>
@@ -38,17 +38,12 @@
       <div class="trust">
         <span><b>Kostenlos</b> abonnieren</span>
         <span>Apple · Google · Outlook</span>
-        <span><b>Werbefrei</b></span>
+        <span><b>Automatisch</b> aktuell</span>
       </div>
     </div>
-    <div class="hero-visual">
-      <span class="float">Auto-Update ✓</span>
-      <div class="mini-cal">
-        <div class="mc-head"><b>September 2026</b><span>Deine Feeds</span></div>
-        <div class="ev"><span class="swatch" style="background:var(--coral)"></span><div><small>Mondphasen</small><p>Vollmond · 21:14</p></div></div>
-        <div class="ev"><span class="swatch" style="background:var(--coral-ink)"></span><div><small>Berlin Events</small><p>Flohmarkt Mauerpark</p></div></div>
-        <div class="ev"><span class="swatch" style="background:var(--indigo)"></span><div><small>Saisonkalender</small><p>Jetzt: Kürbis &amp; Birne</p></div></div>
-      </div>
+    <div class="hero-visual" aria-hidden="true">
+      <img src="assets/hero-calendar.png" alt="" loading="eager" decoding="async">
+      <div class="hero-note">Einmal abonnieren.<br><strong>Immer aktuell.</strong></div>
     </div>
   </div>
 </section>
@@ -166,7 +161,7 @@
   <div class="wrap">
     <div class="fgrid">
       <div>
-        <div class="brand"><img class="lockup" src="assets/logo.png" alt="Calendar Queen"></div>
+        <div class="brand"><img class="lockup" src="assets/logo-footer.png" alt="Calendar Queen"></div>
         <p class="tag">Feed your Calendar. Kuratierte Kalender-Feeds für ein lebendigeres Leben.</p>
       </div>
       <div><h4>Feeds</h4><ul><li><a href="feeds.html">Alle Feeds</a></li><li><a href="feeds.html">Familie &amp; Gesundheit</a></li><li><a href="feeds.html">Berlin</a></li><li><a href="feeds.html">Astronomie</a></li></ul></div>
