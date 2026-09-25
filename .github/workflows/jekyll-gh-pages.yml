@@ -35,6 +35,21 @@ jobs:
         with:
           source: ./
           destination: ./_site
+      - name: Add Umami tracking to all HTML pages
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          tracking = '<script defer src="https://cloud.umami.is/script.js" data-website-id="1aa6d07c-5011-4c9c-b3e8-731eb8e1c49c"></script>'
+
+          for path in Path('_site').rglob('*.html'):
+              text = path.read_text(encoding='utf-8')
+              if 'data-website-id="1aa6d07c-5011-4c9c-b3e8-731eb8e1c49c"' in text:
+                  continue
+              if '</head>' in text:
+                  text = text.replace('</head>', f'{tracking}\n</head>', 1)
+                  path.write_text(text, encoding='utf-8')
+          PY
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
 
