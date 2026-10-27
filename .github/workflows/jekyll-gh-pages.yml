@@ -49,6 +49,7 @@ jobs:
           destination: ./_site
       - name: Ensure Umami tracking is present
         run: |
+          sudo chmod -R u+w _site
           python - <<'PY'
           from pathlib import Path
 
