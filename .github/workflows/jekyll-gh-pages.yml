@@ -9,6 +9,10 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
+  # Refresh the rolling moon-phase calendar monthly.
+  schedule:
+    - cron: "17 5 1 * *"
+
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
   contents: read
@@ -30,6 +34,14 @@ jobs:
         uses: actions/checkout@v4
       - name: Setup Pages
         uses: actions/configure-pages@v5
+      - name: Set up Python for feed generation
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Test the moon-phase feed generator
+        run: python -m unittest discover -s .github/scripts -p "test_*.py"
+      - name: Generate the rolling moon-phase calendar
+        run: python .github/scripts/generate_moon_phases.py
       - name: Build with Jekyll
         uses: actions/jekyll-build-pages@v1
         with:
