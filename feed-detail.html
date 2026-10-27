@@ -29,87 +29,134 @@
   </div>
 </header>
 
-<div class="wrap crumbs">
-  <a href="feeds.html">Feeds</a> / <a href="feeds.html">Familie &amp; Gesundheit</a> / <span>Erstes Babyjahr</span>
+<div class="wrap crumbs" id="crumbs">
+  <a href="feeds.html">Feeds</a> / <span id="crumb-title">Feed auswählen</span>
 </div>
 
-<section class="wrap detail-hero">
-  <div>
-    <div class="dh-ico"><svg viewBox="0 0 24 24"><path d="M12 20s-6-3.8-8.5-7.5C1.8 9.7 3.3 6.5 6.4 6.5c1.8 0 3 1.2 5.6 3.6 2.6-2.4 3.8-3.6 5.6-3.6 3.1 0 4.6 3.2 2.9 6C18 16.2 12 20 12 20z"/></svg></div>
-    <span class="eyebrow">Familie &amp; Gesundheit</span>
-    <h1 class="serif">Erstes Babyjahr</h1>
-    <div class="tagline-row"><span class="badge">Kostenlos</span><span style="font-size:13.5px;color:var(--muted);">52 Wochen · geführt · Auto-Update</span></div>
-    <p class="lede">Wachstumsschübe, Meilensteine und U-Untersuchungen – automatisch berechnet zum Geburtsdatum deines Kindes. So weißt du immer, was gerade dran ist, und wirst nie wieder überrascht.</p>
-    <p style="font-size:14.5px;color:var(--muted);max-width:48ch;">Der Feed passt sich an das von dir gewählte Geburtsdatum an und legt alle Termine des ersten Jahres in deinen Kalender – von den Wonder-Weeks-Schüben bis zu den Vorsorgeterminen.</p>
-  </div>
-
-  <aside class="subscribe-card">
-    <h3 class="serif">Jetzt abonnieren</h3>
-    <p class="sub-note">Ein Klick – der Feed landet direkt in deinem Kalender.</p>
-    <div class="sub-btns">
-      <a href="#"><span class="k"></span>Apple Kalender</a>
-      <a href="#"><span class="k">G</span>Google Kalender</a>
-      <a href="#"><span class="k">O</span>Outlook</a>
+<main id="feed-page">
+  <section class="wrap detail-hero">
+    <div>
+      <span class="eyebrow" id="feed-category">Calendar Queen</span>
+      <h1 class="serif" id="feed-title">Entdecke deinen nächsten Feed</h1>
+      <div class="tagline-row"><span class="badge" id="feed-status">Kalender-Feeds</span><span id="feed-cadence" style="font-size:13.5px;color:var(--muted);"></span></div>
+      <p class="lede" id="feed-description">Wähle einen Kalender aus unserer Übersicht, um mehr darüber zu erfahren.</p>
+      <p id="feed-extra" style="font-size:14.5px;color:var(--muted);max-width:48ch;"></p>
+      <a class="btn btn-ghost" href="feeds.html">← Alle Feeds ansehen</a>
     </div>
-    <div class="webcal">
-      <label for="url">Oder per webcal-Link</label>
-      <div class="row">
-        <input id="url" type="text" value="webcal://calendarqueen.de/feeds/babyjahr.ics" readonly>
-        <button class="btn btn-coral" style="padding:9px 15px;" onclick="var i=document.getElementById('url');i.select();try{document.execCommand('copy');this.textContent='Kopiert';}catch(e){}">Kopieren</button>
+
+    <aside class="subscribe-card" id="subscribe-panel">
+      <h3 class="serif" id="subscribe-heading">Noch in Vorbereitung</h3>
+      <p class="sub-note" id="subscribe-note">Wir arbeiten daran, diesen Feed abonnierbar zu machen.</p>
+      <div id="subscribe-actions"></div>
+    </aside>
+  </section>
+
+  <section class="wrap detail-body">
+    <div class="sec-head" style="margin-bottom:18px;"><h2 class="serif" id="what-heading">Was dich erwartet</h2><span class="count" id="what-label">Feed-Details</span></div>
+    <div class="entries" id="feed-highlights"></div>
+    <p id="feed-source" style="font-size:12.5px;color:var(--muted);margin-top:14px;"></p>
+  </section>
+
+  <section class="sec" style="padding-top:20px;">
+    <div class="wrap">
+      <div class="how">
+        <div class="lead"><span class="kick">So funktioniert's</span><h2 class="serif" id="how-heading">Dein Kalender, ganz einfach.</h2></div>
+        <div class="steps" id="how-steps"></div>
       </div>
     </div>
-  </aside>
-</section>
+  </section>
 
-<section class="wrap detail-body">
-  <div class="sec-head" style="margin-bottom:18px;"><h2 class="serif">Was <em>drin</em> ist</h2><span class="count">Beispiel-Termine</span></div>
-  <div class="entries">
-    <div class="entry"><div class="date"><b>20</b><small>Sep</small></div><div class="etext"><h4>Wachstumsschub #1 · Woche 5</h4><p>Wonder Week – mehr Nähe, unruhiger Schlaf, neue Wahrnehmungen.</p></div></div>
-    <div class="entry"><div class="date"><b>04</b><small>Okt</small></div><div class="etext"><h4>U3-Untersuchung fällig</h4><p>Vorsorgetermin in Woche 4–5 – Erinnerung rechtzeitig vorab.</p></div></div>
-    <div class="entry"><div class="date"><b>18</b><small>Okt</small></div><div class="etext"><h4>Erstes soziales Lächeln · Woche 6</h4><p>Typischer Meilenstein rund um die 6. Lebenswoche.</p></div></div>
-    <div class="entry"><div class="date"><b>29</b><small>Nov</small></div><div class="etext"><h4>Wachstumsschub #4 · Woche 12</h4><p>Größerer Entwicklungssprung – Greifen und Brabbeln beginnen.</p></div></div>
-  </div>
-  <p style="font-size:12.5px;color:var(--muted);margin-top:14px;">Beispielhafte Darstellung. Die tatsächlichen Termine berechnen sich aus dem Geburtsdatum.</p>
-</section>
-
-<section class="sec" style="padding-top:20px;">
-  <div class="wrap">
-    <div class="how">
-      <div class="lead"><span class="kick">So abonnierst du</span><h2 class="serif">In drei Schritten im Kalender.</h2></div>
-      <div class="steps">
-        <div class="step"><div class="num">1</div><h4>Geburtsdatum wählen</h4><p>Gib das Geburtsdatum ein – der Feed berechnet daraus alle Termine des ersten Jahres.</p></div>
-        <div class="step"><div class="num">2</div><h4>Ein Tipp, abonniert</h4><p>Öffnet sich direkt in Apple, Google oder Outlook Kalender – ohne Konto, ohne App.</p></div>
-        <div class="step"><div class="num">3</div><h4>Läuft von allein</h4><p>Alle Meilensteine erscheinen automatisch – rechtzeitig, für das ganze erste Jahr.</p></div>
-      </div>
+  <section class="sec" style="padding-top:8px;">
+    <div class="wrap">
+      <div class="sec-head"><h2 class="serif">Noch mehr <em>entdecken</em></h2><a class="count" href="feeds.html"><b>Alle Feeds →</b></a></div>
     </div>
-  </div>
-</section>
+  </section>
+</main>
 
-<section class="sec" style="padding-top:8px;">
-  <div class="wrap">
-    <div class="sec-head"><h2 class="serif">Ähnliche <em>Feeds</em></h2><a class="count" href="feeds.html"><b>Alle Feeds →</b></a></div>
-    <div class="grid">
-      <a class="fc" href="feeds.html">
-        <div class="fc-top"><div class="fc-ico"><svg viewBox="0 0 24 24"><path d="M12 20s-6-3.8-8.5-7.5C1.8 9.7 3.3 6.5 6.4 6.5c1.8 0 3 1.2 5.6 3.6 2.6-2.4 3.8-3.6 5.6-3.6 3.1 0 4.6 3.2 2.9 6C18 16.2 12 20 12 20z"/></svg></div><span class="badge">Kostenlos</span></div>
-        <span class="fc-cat">Familie &amp; Gesundheit</span><h3 class="serif">40 Schwangerschaftswochen</h3>
-        <p>Woche für Woche durch die Schwangerschaft – Entwicklung, Termine, Checklisten.</p>
-        <div class="fc-actions"><span class="btn-sub">Abonnieren</span><span class="details">Details →</span></div>
-      </a>
-      <a class="fc" href="feeds.html">
-        <div class="fc-top"><div class="fc-ico"><svg viewBox="0 0 24 24"><path d="M12 20s-6-3.8-8.5-7.5C1.8 9.7 3.3 6.5 6.4 6.5c1.8 0 3 1.2 5.6 3.6 2.6-2.4 3.8-3.6 5.6-3.6 3.1 0 4.6 3.2 2.9 6C18 16.2 12 20 12 20z"/></svg></div><span class="badge">Kostenlos</span></div>
-        <span class="fc-cat">Familie &amp; Gesundheit</span><h3 class="serif">Pollenflug-Kalender</h3>
-        <p>Wann welche Pollen fliegen – rechtzeitig vorbereitet durch die Saison.</p>
-        <div class="fc-actions"><span class="btn-sub">Abonnieren</span><span class="details">Details →</span></div>
-      </a>
-      <a class="fc" href="feeds.html">
-        <div class="fc-top"><div class="fc-ico"><svg viewBox="0 0 24 24"><path d="M12 21c0-6 0-10 7-13-1 8-4 10-7 10z"/><path d="M12 21c0-4-2-6-5-7"/></svg></div><span class="badge">Kostenlos</span></div>
-        <span class="fc-cat">Natur &amp; Garten</span><h3 class="serif">Saisonkalender</h3>
-        <p>Obst &amp; Gemüse, wenn es am besten schmeckt – regional gedacht.</p>
-        <div class="fc-actions"><span class="btn-sub">Abonnieren</span><span class="details">Details →</span></div>
-      </a>
-    </div>
-  </div>
-</section>
+<script>
+(function(){
+  var FEEDS = {
+    'Mondphasen & Mondkalender': {category:'Astronomie & Himmel', cadence:'monatlich aktualisiert', description:'Neumond, Vollmond und die beiden Viertelphasen – die wichtigsten Momente des Mondzyklus in deinem Kalender.', extra:'Die Termine basieren auf astronomischen Berechnungen des U.S. Naval Observatory. Der Kalender umfasst rollierend die nächsten 24 Monate.', live:true},
+    'Berlin: Events & Kultur': {category:'Berlin Lokal', cadence:'wöchentlich', description:'Konzerte, Openings und Ausstellungen in Berlin – kuratierte Kulturtermine an einem Ort.', extra:'Dieser Feed ist noch in Vorbereitung. Die Abo-Funktion wird erst aktiviert, wenn die Datenquelle und Aktualisierung zuverlässig eingerichtet sind.'},
+    'Sonnenauf- & -untergänge': {category:'Natur & Himmel', cadence:'täglich', description:'Sonnenaufgang, Sonnenuntergang sowie goldene und blaue Stunde.', extra:'Dieser Feed ist noch in Vorbereitung. Für verlässliche Zeiten muss später ein Standort ausgewählt oder festgelegt werden.'},
+    'Was passiert in Berlin?': {category:'Berlin Lokal', cadence:'wöchentlich', description:'Kiez-Events, neue Orte und Community-Termine der Woche.', extra:'Dieser Feed ist noch in Vorbereitung.'},
+    'Berliner Wochenmärkte': {category:'Berlin Lokal', cadence:'wöchentlich', description:'Wann und wo Berliner Wochenmärkte stattfinden – mit Hinweisen auf Ausnahmen und Änderungen.', extra:'Dieser Feed ist noch in Vorbereitung.'},
+    'Museen, Fotografie & Ausstellungen': {category:'Kultur & Freizeit', cadence:'monatlich', description:'Neue Ausstellungen, Fotografie und besondere Kulturtermine.', extra:'Dieser Feed ist noch in Vorbereitung.'},
+    'Garten & Pflanzen': {category:'Natur & Garten', cadence:'saisonal', description:'Säen, pflegen und ernten – saisonale Erinnerungen für deinen grünen Alltag.', extra:'Dieser Feed ist noch in Vorbereitung.'},
+    'Himmel über dir': {category:'Astronomie & Himmel', cadence:'monatlich', description:'Meteorschauer, Supermonde und besondere Himmelsereignisse.', extra:'Dieser Feed ist noch in Vorbereitung.'},
+    'Vogelzug & Naturphänomene': {category:'Natur & Garten', cadence:'saisonal', description:'Saisonale Naturereignisse und die besonderen Momente im Jahreslauf.', extra:'Dieser Feed ist noch in Vorbereitung.'},
+    'Berlin: Open Airs & Freiluftkino': {category:'Berlin Lokal', cadence:'saisonal', description:'Filme unter freiem Himmel und Open-Air-Termine für die warme Jahreszeit.', extra:'Dieser Feed ist noch in Vorbereitung.'},
+    'Marathons & große Läufe': {category:'Sport', cadence:'nach Termin', description:'Laufveranstaltungen, Anmeldestarts und wichtige Renntage.', extra:'Dieser Feed ist noch in Vorbereitung.'},
+    'Musik & Festivals 2027': {category:'Musik & Festivals', cadence:'nach Termin', description:'Festivals, Line-up-Ankündigungen und Vorverkaufsstarts im Blick behalten.', extra:'Dieser Feed ist noch in Vorbereitung.'},
+    'Wildpflanzen & Kräuter': {category:'Natur & Garten', cadence:'saisonal', description:'Sammel- und Erntezeiten für Wildkräuter – Saison für Saison.', extra:'Dieser Feed ist noch in Vorbereitung.'},
+    'Saisonales Kochen': {category:'Natur & Garten', cadence:'wöchentlich', description:'Inspiration für Obst, Gemüse und Zutaten, die gerade Saison haben.', extra:'Dieser Feed ist noch in Vorbereitung.'},
+    'Sale- & Shopping-Kalender': {category:'Shopping & Fristen', cadence:'nach Termin', description:'Wichtige Aktionstage und saisonale Shopping-Termine im Jahreslauf.', extra:'Dieser Feed ist noch in Vorbereitung.'},
+    'Daily Stoic': {category:'Spiritualität', cadence:'täglich', description:'Ein kurzer stoischer Gedanke als täglicher Impuls für mehr Klarheit.', extra:'Dieser Feed ist noch in Vorbereitung. Redaktionelle Inhalte werden vor einer Veröffentlichung geprüft.'},
+    'Wochenhoroskop': {category:'Spiritualität', cadence:'wöchentlich', description:'Ein wöchentlicher astrologischer Impuls für dein Sternzeichen.', extra:'Dieser Feed ist noch in Vorbereitung. Die Inhalte müssen redaktionell erstellt und geprüft werden.'},
+    'ISS & Polarlichter': {category:'Astronomie & Himmel', cadence:'nach Sichtbarkeit', description:'Sichtbare ISS-Überflüge und Hinweise auf mögliche Polarlichtaktivität.', extra:'Dieser Feed ist noch in Vorbereitung. Sichtbarkeit hängt vom Standort und aktuellen Bedingungen ab.'},
+    'Schulferien & Brückentage': {category:'Alltag & Verwaltung', cadence:'jährlich aktualisiert', description:'Schulferien und hilfreiche Brückentage zur Urlaubsplanung.', extra:'Dieser Feed ist noch in Vorbereitung. Die Termine müssen für das jeweilige Bundesland ausgewählt werden.'},
+    'Steuer-, Behörden- & Fristen': {category:'Alltag & Verwaltung', cadence:'nach Frist', description:'Wichtige Abgabe-, Zahlungs- und Verwaltungsfristen im Blick behalten.', extra:'Dieser Feed ist noch in Vorbereitung. Fristen werden erst nach Prüfung der zuständigen offiziellen Quellen veröffentlicht.'}
+  };
+  var params = new URLSearchParams(window.location.search);
+  var selected = params.get('feed');
+  var feed = FEEDS[selected];
+  var title = document.getElementById('feed-title');
+  var category = document.getElementById('feed-category');
+  var status = document.getElementById('feed-status');
+  var cadence = document.getElementById('feed-cadence');
+  var description = document.getElementById('feed-description');
+  var extra = document.getElementById('feed-extra');
+  var crumb = document.getElementById('crumb-title');
+  var meta = document.querySelector('meta[name="description"]');
+  function escapeHtml(value){return String(value).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
+  function setSteps(items){document.getElementById('how-steps').innerHTML=items.map(function(item,i){return '<div class="step"><div class="num">'+(i+1)+'</div><h4>'+escapeHtml(item[0])+'</h4><p>'+escapeHtml(item[1])+'</p></div>';}).join('');}
+  function highlight(titleText, descriptionText, day, month){return '<div class="entry"><div class="date"><b>'+escapeHtml(day)+'</b><small>'+escapeHtml(month)+'</small></div><div class="etext"><h4>'+escapeHtml(titleText)+'</h4><p>'+escapeHtml(descriptionText)+'</p></div></div>';}
+  if(!feed){
+    title.textContent='Entdecke deinen nächsten Feed';
+    description.textContent='Wähle einen Kalender aus unserer Übersicht, um mehr darüber zu erfahren.';
+    extra.textContent=''; category.textContent='Calendar Queen'; status.textContent='Feed-Übersicht'; cadence.textContent='';
+    crumb.textContent='Feed auswählen';
+    document.getElementById('subscribe-heading').textContent='Feed auswählen';
+    document.getElementById('subscribe-note').textContent='Öffne einen Feed über die Übersicht, um Details und den aktuellen Abo-Status zu sehen.';
+    document.getElementById('subscribe-actions').innerHTML='<a class="btn btn-coral" href="feeds.html">Alle Feeds ansehen</a>';
+    document.getElementById('feed-highlights').innerHTML=highlight('Noch kein Feed ausgewählt','Gehe zur Übersicht und wähle einen Kalender aus.', '—','');
+    document.getElementById('feed-source').textContent='';
+    setSteps([['Feed auswählen','Öffne die Übersicht der verfügbaren Kalender.'],['Details ansehen','Jeder Feed zeigt seinen Inhalt und ob er bereits abonnierbar ist.'],['Abonnieren','Für verfügbare Feeds findest du hier den passenden Link.']]);
+    document.title='Feed entdecken — Calendar Queen';
+    return;
+  }
+  title.textContent=selected; category.textContent=feed.category; description.textContent=feed.description; extra.textContent=feed.extra; crumb.textContent=selected;
+  cadence.textContent=feed.cadence; status.textContent=feed.live?'Jetzt abonnierbar':'In Vorbereitung';
+  document.title=selected+' — Calendar Queen';
+  meta.setAttribute('content',feed.description+' Calendar Queen Kalender-Feed.');
+  if(feed.live){
+    document.getElementById('subscribe-heading').textContent='Mondphasen abonnieren';
+    document.getElementById('subscribe-note').textContent='Füge den Kalender einmal hinzu. Die Termine werden regelmäßig aktualisiert, sobald deine Kalender-App den Feed erneut abruft.';
+    var ics='https://calendarqueen.de/feeds/mondphasen.ics';
+    var webcal='webcal://calendarqueen.de/feeds/mondphasen.ics';
+    var google='https://calendar.google.com/calendar/u/0/r?cid='+encodeURIComponent(ics);
+    var outlook='https://outlook.live.com/calendar/0/addfromweb?url='+encodeURIComponent(ics)+'&name='+encodeURIComponent('Mondphasen | Calendar Queen');
+    document.getElementById('subscribe-actions').innerHTML='<div class="sub-btns"><a href="'+webcal+'"><span class="k">A</span>Apple Kalender abonnieren</a><a href="'+google+'" target="_blank" rel="noopener"><span class="k">G</span>Google Kalender hinzufügen</a><a href="'+outlook+'" target="_blank" rel="noopener"><span class="k">O</span>Outlook abonnieren</a><a href="feeds/mondphasen.ics"><span class="k">↓</span>Kalenderdatei (.ics) öffnen</a></div><div class="webcal"><label for="url">Abo-Adresse</label><div class="row"><input id="url" type="text" value="'+webcal+'" readonly><button class="btn btn-coral" style="padding:9px 15px;" id="copy-feed-url">Kopieren</button></div></div>';
+    document.getElementById('copy-feed-url').addEventListener('click',function(){var input=document.getElementById('url');input.select();if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(input.value).then(function(){this.textContent='Kopiert';}.bind(this)).catch(function(){document.execCommand('copy');this.textContent='Kopiert';}.bind(this));}else{document.execCommand('copy');this.textContent='Kopiert';}});
+    document.getElementById('what-heading').textContent='Die vier Hauptmondphasen';
+    document.getElementById('what-label').textContent='Astronomische Termine';
+    document.getElementById('feed-highlights').innerHTML=highlight('Neumond','Der Mond steht zwischen Erde und Sonne und ist am Himmel kaum sichtbar.','🌑','')+highlight('Erstes Viertel','Die rechte Mondhälfte ist beleuchtet (auf der Nordhalbkugel).','🌓','')+highlight('Vollmond','Die dem Mond zugewandte Seite der Erde sieht die beleuchtete Mondscheibe.','🌕','')+highlight('Letztes Viertel','Die linke Mondhälfte ist beleuchtet (auf der Nordhalbkugel).','🌗','');
+    document.getElementById('feed-source').innerHTML='Datenquelle: <a href="https://aa.usno.navy.mil/data/api" target="_blank" rel="noopener">U.S. Naval Observatory – API-Dokumentation</a>. Kalenderzeitpunkte werden in UTC gespeichert und in deiner Kalender-App lokal angezeigt.';
+    document.getElementById('how-heading').textContent='Einmal abonnieren. Immer im Blick.';
+    setSteps([['Kalender auswählen','Öffne den Abo-Link für deine Kalender-App oder nutze die .ics-Datei.'],['Feed hinzufügen','Abonniere die Kalenderadresse – importiere die Datei nicht nur, wenn du automatische Updates möchtest.'],['Automatisch aktuell bleiben','Der Feed wird monatlich neu erstellt. Wann Änderungen angezeigt werden, hängt vom Kalenderanbieter ab.']]);
+  }else{
+    document.getElementById('subscribe-heading').textContent='Dieser Feed kommt noch';
+    document.getElementById('subscribe-note').textContent='Der Kalender ist noch nicht abonnierbar. Wir aktivieren den Abo-Link erst, wenn Quelle, Termine und Aktualisierung geprüft sind.';
+    document.getElementById('subscribe-actions').innerHTML='<a class="btn btn-coral" href="mailto:hallo@calendarqueen.de?subject='+encodeURIComponent('Interesse am Feed: '+selected)+'">Interesse mitteilen</a><p style="font-size:12px;color:var(--muted);margin-top:12px;">Noch kein Abo-Link verfügbar – wir möchten keine leeren oder irreführenden Kalenderdateien anbieten.</p>';
+    document.getElementById('what-heading').textContent='Was dich erwartet';
+    document.getElementById('what-label').textContent='Geplant';
+    document.getElementById('feed-highlights').innerHTML=highlight('Inhalt','Die Beschreibung oben zeigt den geplanten Umfang dieses Feeds.','—','')+highlight('Datenquelle','Vor Veröffentlichung wird eine geeignete und verlässliche Quelle ausgewählt.','—','')+highlight('Automatische Updates','Der Feed wird erst aktiviert, wenn Aktualisierung und Fehlerbehandlung getestet sind.','—','');
+    document.getElementById('feed-source').textContent='Die Verfügbarkeit wird hier angezeigt, sobald dieser Kalender veröffentlicht ist.';
+    document.getElementById('how-heading').textContent='Wir bereiten diesen Feed vor.';
+    setSteps([['Quelle prüfen','Wir wählen geeignete Daten und klären Nutzungsbedingungen.'],['Kalender testen','Termine und automatische Aktualisierungen werden geprüft.'],['Abo freischalten','Erst danach erscheint ein funktionierender Abo-Link.']]);
+  }
+})();
+</script>
 
 <footer class="site">
   <div class="wrap">
@@ -128,6 +175,7 @@
     </div>
   </div>
 </footer>
+
 
 </body>
 </html>
