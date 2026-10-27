@@ -164,7 +164,7 @@
         + '<span class="ec-cat">'+f.c+'</span>'
         + '<h3 class="serif"><a href="feed-detail.html?feed='+encodeURIComponent(f.t)+'">'+f.t+'</a></h3>'
         + '<p>'+f.d+'</p>'
-        + '<div class="ec-foot"><span class="ec-meta">Kostenlos · '+f.m+'</span><a class="ec-add" href="feed-detail.html?feed='+encodeURIComponent(f.t)+'">+ Details</a></div>'
+        + '<div class="ec-foot"><span class="ec-meta">'+(f.m==='in Vorbereitung'?'In Vorbereitung':'Kostenlos · '+f.m)+'</span><a class="ec-add" href="feed-detail.html?feed='+encodeURIComponent(f.t)+'">+ Details</a></div>'
       + '</div></article>';
   }
 

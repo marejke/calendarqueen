@@ -77,7 +77,7 @@
 (function(){
   var FEEDS = {
     'Mondphasen & Mondkalender': {category:'Astronomie & Himmel', cadence:'monatlich aktualisiert', description:'Neumond, Vollmond und die beiden Viertelphasen – die wichtigsten Momente des Mondzyklus in deinem Kalender.', extra:'Die Termine basieren auf astronomischen Berechnungen des U.S. Naval Observatory. Der Kalender umfasst rollierend die nächsten 24 Monate.', live:true},
-    'Berlin: Bühnen & Museen': {category:'Berlin Kultur', cadence:'Update-Rhythmus folgt', description:'Theater, Tanz, Oper, Konzerte und besondere Museumstermine – Kultur in Berlin, gesammelt an einem Ort.', extra:'Geplant sind die Quellen Berlin Bühnen und Museumsportal Berlin. Der Feed bleibt in Vorbereitung, bis Datenzugang, Nutzungsrechte und automatische Aktualisierung geklärt sind.'},
+    'Berlin: Bühnen & Museen': {category:'Berlin Kultur', cadence:'wöchentlich, sobald Datenzugang eingerichtet ist', description:'Theater, Tanz, Oper, Konzerte und besondere Museumstermine – Kultur in Berlin, gesammelt an einem Ort.', extra:'Geplant sind die Quellen Berlin Bühnen und Museumsportal Berlin. Der Feed bleibt in Vorbereitung, bis Datenzugang, Nutzungsrechte und automatische Aktualisierung geklärt sind.'},
     'Sonnenauf- & -untergänge': {category:'Natur & Himmel', cadence:'täglich', description:'Sonnenaufgang, Sonnenuntergang sowie goldene und blaue Stunde.', extra:'Dieser Feed ist noch in Vorbereitung. Für verlässliche Zeiten muss später ein Standort ausgewählt oder festgelegt werden.'},
     'Was passiert in Berlin?': {category:'Berlin Lokal', cadence:'wöchentlich', description:'Kiez-Events, neue Orte und Community-Termine der Woche.', extra:'Dieser Feed ist noch in Vorbereitung.'},
     'Berliner Wochenmärkte': {category:'Berlin Lokal', cadence:'wöchentlich', description:'Wann und wo Berliner Wochenmärkte stattfinden – mit Hinweisen auf Ausnahmen und Änderungen.', extra:'Dieser Feed ist noch in Vorbereitung.'},
@@ -154,6 +154,71 @@
     document.getElementById('feed-source').textContent='Die Verfügbarkeit wird hier angezeigt, sobald dieser Kalender veröffentlicht ist.';
     document.getElementById('how-heading').textContent='Wir bereiten diesen Feed vor.';
     setSteps([['Quelle prüfen','Wir wählen geeignete Daten und klären Nutzungsbedingungen.'],['Kalender testen','Termine und automatische Aktualisierungen werden geprüft.'],['Abo freischalten','Erst danach erscheint ein funktionierender Abo-Link.']]);
+  }
+
+  // Once the authorized source feeds are configured and the ICS file is built,
+  // automatically activate the Berlin feed. Until then it stays in preparation.
+  if (selected === 'Berlin: Bühnen & Museen') {
+    var berlinCalendarPath = 'feeds/berlin-buehnen-museen.ics';
+    fetch(berlinCalendarPath, { method: 'HEAD', cache: 'no-store' })
+      .then(function(response) {
+        if (!response.ok) return;
+        activateBerlinCultureFeed(berlinCalendarPath);
+      })
+      .catch(function() { /* Stay in preparation if the feed is not available. */ });
+  }
+
+  function activateBerlinCultureFeed(relativePath) {
+    var httpsUrl = new URL(relativePath, window.location.href).href;
+    var webcalUrl = httpsUrl.replace(/^https?:/, 'webcal:');
+    var googleUrl = 'https://calendar.google.com/calendar/u/0/r?cid=' + encodeURIComponent(httpsUrl);
+    var outlookUrl = 'https://outlook.live.com/calendar/0/addfromweb?url=' + encodeURIComponent(httpsUrl) + '&name=' + encodeURIComponent('Berlin: Bühnen & Museen | Calendar Queen');
+
+    status.textContent = 'Jetzt abonnierbar';
+    cadence.textContent = 'wöchentlich aktualisiert';
+    document.getElementById('subscribe-heading').textContent = 'Berlin Kultur abonnieren';
+    document.getElementById('subscribe-note').textContent = 'Abonniere den Kalender, damit neue und geänderte Termine bei der nächsten Aktualisierung deiner Kalender-App übernommen werden.';
+    document.getElementById('subscribe-actions').innerHTML =
+      '<div class="sub-btns">' +
+        '<a href="' + webcalUrl + '"><span class="k">A</span>Apple Kalender abonnieren</a>' +
+        '<a href="' + googleUrl + '" target="_blank" rel="noopener"><span class="k">G</span>Google Kalender hinzufügen</a>' +
+        '<a href="' + outlookUrl + '" target="_blank" rel="noopener"><span class="k">O</span>Outlook abonnieren</a>' +
+        '<a href="' + relativePath + '" download="berlin-buehnen-museen.ics"><span class="k">↓</span>Kalenderdatei (.ics) herunterladen</a>' +
+      '</div>' +
+      '<div class="webcal"><label for="berlin-feed-url">Abo-Adresse</label><div class="row">' +
+        '<input id="berlin-feed-url" type="text" value="' + webcalUrl + '" readonly>' +
+        '<button class="btn btn-coral" style="padding:9px 15px;" id="copy-berlin-feed-url">Kopieren</button>' +
+      '</div></div>';
+    document.getElementById('copy-berlin-feed-url').addEventListener('click', function() {
+      var input = document.getElementById('berlin-feed-url');
+      input.select();
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(input.value).then(function() {
+          this.textContent = 'Kopiert';
+        }.bind(this)).catch(function() {
+          document.execCommand('copy');
+          this.textContent = 'Kopiert';
+        }.bind(this));
+      } else {
+        document.execCommand('copy');
+        this.textContent = 'Kopiert';
+      }
+    });
+
+    document.getElementById('what-heading').textContent = 'Was im Kalender erscheint';
+    document.getElementById('what-label').textContent = 'Berliner Kulturtermine';
+    document.getElementById('feed-highlights').innerHTML =
+      highlight('Bühnen & Performance', 'Theater, Tanz, Oper, Musiktheater, Konzerte, Lesungen und ausgewählte Workshops aus dem Bühnenprogramm.', '01', '') +
+      highlight('Museen & Ausstellungen', 'Veranstaltungen und Führungen der Berliner Museen, Schlösser und Gedenkstätten.', '02', '') +
+      highlight('Automatische Aktualisierung', 'Der Feed wird wöchentlich neu erzeugt. Deine Kalender-App entscheidet, wann sie die aktualisierte Datei erneut abruft.', '↻', '');
+    document.getElementById('feed-source').innerHTML =
+      'Geplante Quellen: <a href="https://www.berlin-buehnen.de/de/meta/l/ueber-uns/" target="_blank" rel="noopener">Berlin Bühnen</a> und <a href="https://www.museumsportal-berlin.de/de/uber-uns/" target="_blank" rel="noopener">Museumsportal Berlin</a>.';
+    document.getElementById('how-heading').textContent = 'Einmal abonnieren. Kultur im Blick behalten.';
+    setSteps([
+      ['Kalender auswählen', 'Füge den Feed über deinen Kalenderanbieter hinzu oder lade die .ics-Datei herunter.'],
+      ['Feed abonnieren', 'Ein Abo bleibt mit der Feed-Adresse verbunden. Ein reiner Dateidownload aktualisiert sich nicht automatisch.'],
+      ['Aktuell bleiben', 'Die Quelldaten werden wöchentlich neu übernommen; wie schnell Änderungen angezeigt werden, hängt von deiner Kalender-App ab.']
+    ]);
   }
 })();
 </script>

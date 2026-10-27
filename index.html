@@ -144,7 +144,7 @@ var SECTIONS = [
   ]}
 ];
 function homeCard(f, cls){
-  return '<a class="home-feed '+(cls||'')+'" href="feed-detail.html"><div class="home-feed-illu" style="background:'+TINT[f.illu]+'">'+ILLU[f.illu]+'</div><div class="home-feed-body"><span class="ec-cat">'+f.c+'</span><h4 class="serif">'+f.t+'</h4><p>'+f.d+'</p><div class="home-feed-foot"><span>Kostenlos · '+f.m+'</span><b>Abonnieren →</b></div></div></a>';
+  return '<a class="home-feed '+(cls||'')+'" href="feed-detail.html?feed='+encodeURIComponent(f.t)+'"><div class="home-feed-illu" style="background:'+TINT[f.illu]+'">'+ILLU[f.illu]+'</div><div class="home-feed-body"><span class="ec-cat">'+f.c+'</span><h4 class="serif">'+f.t+'</h4><p>'+f.d+'</p><div class="home-feed-foot"><span>'+(f.m==='in Vorbereitung'?'In Vorbereitung':'Kostenlos · '+f.m)+'</span><b>'+(f.m==='in Vorbereitung'?'Mehr erfahren →':'Abonnieren →')+'</b></div></div></a>';
 }
 function renderHome(q){
   q=(q||'').trim().toLowerCase();
